@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-01-2018 a las 14:30:06
+-- Tiempo de generación: 06-04-2018 a las 06:44:55
 -- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 7.0.6
+-- Versión de PHP: 5.6.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -46,9 +46,7 @@ INSERT INTO `authors` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
 (6, 'TOM CORMEN', '2017-11-22 17:06:02', '2017-11-22 17:06:02'),
 (7, 'JHOSNOIRLIT HERNANDEZ', '2017-11-22 17:09:12', '2017-11-22 17:09:12'),
 (8, 'JOSE PEREZ', '2017-11-22 18:38:50', '2017-11-22 18:38:50'),
-(9, '', '2017-12-05 01:01:32', '2017-12-05 01:01:32'),
-(10, 'FERMÍN MÁRMOL LEÓN', '2018-01-16 06:24:35', '2018-01-16 06:24:35'),
-(11, 'MAYBA', '2018-01-16 22:51:20', '2018-01-16 22:51:20');
+(9, '', '2017-12-05 01:01:32', '2017-12-05 01:01:32');
 
 -- --------------------------------------------------------
 
@@ -71,19 +69,14 @@ CREATE TABLE `author_book` (
 INSERT INTO `author_book` (`id`, `author_id`, `book_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, NULL, NULL),
 (2, 1, 3, NULL, NULL),
+(3, 2, 2, NULL, NULL),
 (4, 3, 4, NULL, NULL),
 (5, 4, 5, NULL, NULL),
 (6, 5, 6, NULL, NULL),
 (7, 6, 7, '2017-11-22 17:06:02', '2017-11-22 17:06:02'),
 (9, 8, 9, '2017-11-22 18:38:50', '2017-11-22 18:38:50'),
 (10, 7, 8, '2017-12-05 01:01:32', '2017-12-05 01:01:32'),
-(11, 9, 8, '2017-12-05 01:01:32', '2017-12-05 01:01:32'),
-(17, 2, 2, '2018-01-16 02:32:05', '2018-01-16 02:32:05'),
-(18, 9, 2, '2018-01-16 02:32:05', '2018-01-16 02:32:05'),
-(19, 9, 2, '2018-01-16 02:32:05', '2018-01-16 02:32:05'),
-(20, 9, 2, '2018-01-16 02:32:05', '2018-01-16 02:32:05'),
-(21, 10, 10, '2018-01-16 06:24:35', '2018-01-16 06:24:35'),
-(22, 11, 11, '2018-01-16 22:51:20', '2018-01-16 22:51:20');
+(11, 9, 8, '2017-12-05 01:01:32', '2017-12-05 01:01:32');
 
 -- --------------------------------------------------------
 
@@ -120,16 +113,14 @@ CREATE TABLE `books` (
 
 INSERT INTO `books` (`id`, `tipo`, `titulo`, `anio_edicion`, `numero_paginas`, `portada`, `sala`, `idioma`, `resumen`, `fecha_incorporacion`, `fecha_desincorporacion`, `publisher_id`, `speciality_id`, `url`, `clasificacion`, `subclasificacion`, `veces`, `deleted_at`, `created_at`, `updated_at`) VALUES
 (1, 'LIBRO', '20 000 Leguas de Viaje Submarino', 2010, 123, 'TAPA BLANDA', '1', 'ESPAÑOL', 'Viaje a lo largo del mundo en un submarino, de la mano fuurisa de Julio Verne. Sumergee en una avenura replea de pasion y peligros.', '2011-01-07', NULL, 1, 1, NULL, 2, '', 0, '2018-01-10 21:36:28', NULL, '2018-01-10 21:36:28'),
-(2, 'LIBRO', '100 años de soledad', 1998, 123, 'TAPA DURA', '1', 'ESPAÑOL', 'Una saga multigeneracional, que nos adenra en la familia Buendia y la fundacion de Macondo, una poblacion ficicia surgida de la imaginacion ganadora de un Nobel de Lieraura.', '2018-01-15', NULL, 1, 1, NULL, 2, '', 0, NULL, NULL, '2018-01-16 02:32:04'),
+(2, 'LIBRO', '100 años de soledad', 1998, 123, 'TAPA DURA', '1', 'ESPAÑOL', 'Una saga muligeneracional, que nos adenra en la familia Buendia y la fundacion de Macondo, una poblacion ficicia surgida de la imaginacion ganadora de un Nobel de Lieraura.', '2011-01-07', NULL, 1, 1, NULL, 2, '', 0, NULL, NULL, NULL),
 (3, 'LIBRO', 'Viaje al Centro de la Tierra', 2010, 123, 'TAPA BLANDA', '1', 'ESPAÑOL', 'Una ripulacion emeraria se avenura a indagar en lo mas hondo del planea para hallar el cenro del planea.', '2015-09-27', NULL, 1, 1, NULL, 2, '', 0, '2018-01-10 20:20:15', NULL, '2018-01-10 20:20:15'),
 (4, 'LIBRO', 'Don Quijoe de la Mancha', 1500, 1269, 'TAPA BLANDA', '1', 'ESPAÑOL', 'Un avido hidalgo lecor de novelas de caballeria ermina por ceder a la locura en medio de su voraz apeio por las hisorias de epica.', '2015-09-27', NULL, 1, 1, NULL, 2, '', 0, NULL, NULL, NULL),
 (5, 'LIBRO', 'Mago de Oz', 1900, 123, 'TAPA BLANDA', '1', 'ESPAÑOL', 'Un leon sin valor, un espanapajaros sin cerebro, un robo sin corazon y una nina sin oficio.', '2015-09-27', NULL, 1, 1, NULL, 2, '', 0, NULL, NULL, NULL),
 (6, 'LIBRO', 'The Hellbound Heart', 1900, 50, 'TAPA BLANDA', '1', 'ENGLISH', 'Deep inside he human hear, he sickes passions and desires live wihin. An arifac, called he Lemarchand Box, promises o he seekers a whole new world of feelings, involving pleny of pleasure... or pain?', '2015-09-27', NULL, 1, 1, NULL, 2, '', 0, NULL, NULL, NULL),
-(7, '', 'INTRODUCCIÓN A ALGORITMOS', 2006, 1202, '', '1', 'ESPAÑOL', 'Introducción detalla y prática sobre algoritmos', '2017-11-22', NULL, 1, 1, 'a88ce6515f9985f5c232863be15b9b97.pdf', 1, '', 7, NULL, '2017-11-22 17:06:02', '2018-01-16 22:26:40'),
+(7, '', 'INTRODUCCIÓN A ALGORITMOS', 2006, 1202, '', '1', 'ESPAÑOL', 'Introducción detalla y prática sobre algoritmos', '2017-11-22', NULL, 1, 1, 'a88ce6515f9985f5c232863be15b9b97.pdf', 1, '', 6, NULL, '2017-11-22 17:06:02', '2018-01-08 16:13:21'),
 (8, 'LIBRO', 'APLICACIÓN WEB PARA EL MANEJO DE LOS PROCESOS ADMINISTRATIVOS Y SERVICIOS DE LA BIBLIOTECA MIGUEL ANGEL PEREZ RODRIGUEZ DE LA UPT ARAGUA', 2017, 150, 'N/A', '1', 'ESPAÑOL', 'Aplicación web para la gestión de los procesos administrativos y servicios de la biblioteca', '2017-12-04', NULL, 1, 1, 'df12195462117aeda5282f8f26f078a5.pdf', 3, 'Pregrado PNF', 7, '2018-01-08 16:10:33', '2017-11-22 17:09:12', '2018-01-08 16:10:33'),
-(9, '', 'PROGRAMA EN CLIPS, MEDICINA', 2010, 123, '', '1', 'ESPAÑOL', 'programa expero para el diagnosico de pacienes', '2017-11-22', NULL, 1, 1, '14f53c90e4af5532a3208cc0f77a3357.pdf', 3, 'Trabajos de Ascenso', 4, NULL, '2017-11-22 18:38:50', '2018-01-16 22:27:05'),
-(10, '', '4 CRIMENES, 4 PODERES', 1973, 200, 'TAPA DURA', '1', 'ESPAÑOL', 'Entre octubre de 1961 y febrero de 1973 cuatro casos impactaron a la opinión pública; la violación y asesinato de la hermana de un sacerdote, la extraña muerte en un ascensor de la esposa de un oficial de la aviación, el terrible asesinato de la esposa de un diputado al Congreso de la República y el secuestro y homicidio de un adolescente en el este de Caracas. Un hilo conductor unía a estos 4 sucesos: La intervención de poderes fácticos que obstaculizaron la aplicación de la justicia', '2018-01-16', NULL, 1, 1, NULL, 2, '', 0, NULL, '2018-01-16 06:24:35', '2018-01-16 06:24:35'),
-(11, '', 'MECANICA', 1993, 123, 'TAPA DURA', '1', 'ESPAÑOL', 'resumen', '2018-01-16', NULL, 1, 1, NULL, 2, '', 0, NULL, '2018-01-16 22:51:20', '2018-01-16 22:51:20');
+(9, '', 'PROGRAMA EN CLIPS, MEDICINA', 2010, 123, '', '1', 'ESPAÑOL', 'programa expero para el diagnosico de pacienes', '2017-11-22', NULL, 1, 1, '14f53c90e4af5532a3208cc0f77a3357.pdf', 3, 'Trabajos de Ascenso', 3, NULL, '2017-11-22 18:38:50', '2017-11-22 19:39:38');
 
 -- --------------------------------------------------------
 
@@ -151,6 +142,8 @@ CREATE TABLE `book_tag` (
 
 INSERT INTO `book_tag` (`id`, `tag_id`, `book_id`, `created_at`, `updated_at`) VALUES
 (1, 2, 1, NULL, NULL),
+(2, 1, 2, NULL, NULL),
+(3, 2, 2, NULL, NULL),
 (4, 2, 3, NULL, NULL),
 (5, 2, 4, NULL, NULL),
 (6, 2, 5, NULL, NULL),
@@ -161,15 +154,7 @@ INSERT INTO `book_tag` (`id`, `tag_id`, `book_id`, `created_at`, `updated_at`) V
 (15, 5, 8, '2017-12-05 01:01:32', '2017-12-05 01:01:32'),
 (16, 6, 8, '2017-12-05 01:01:32', '2017-12-05 01:01:32'),
 (17, 7, 8, '2017-12-05 01:01:32', '2017-12-05 01:01:32'),
-(18, 9, 8, '2017-12-05 01:01:32', '2017-12-05 01:01:32'),
-(26, 1, 2, '2018-01-16 02:32:04', '2018-01-16 02:32:04'),
-(27, 2, 2, '2018-01-16 02:32:05', '2018-01-16 02:32:05'),
-(28, 9, 2, '2018-01-16 02:32:05', '2018-01-16 02:32:05'),
-(29, 9, 2, '2018-01-16 02:32:05', '2018-01-16 02:32:05'),
-(30, 9, 2, '2018-01-16 02:32:05', '2018-01-16 02:32:05'),
-(31, 10, 10, '2018-01-16 06:24:35', '2018-01-16 06:24:35'),
-(32, 11, 10, '2018-01-16 06:24:35', '2018-01-16 06:24:35'),
-(33, 12, 11, '2018-01-16 22:51:20', '2018-01-16 22:51:20');
+(18, 9, 8, '2017-12-05 01:01:32', '2017-12-05 01:01:32');
 
 -- --------------------------------------------------------
 
@@ -203,9 +188,10 @@ INSERT INTO `events` (`id`, `nombre`, `detalles`, `cantidad_asistentes`, `user_i
 (3, 'OTRO EVENTO', 'ADFSADS', 20, 2, 'Heider Daniel Sanchez', '04124373630', '2017-11-30 09:52:00', '2017-11-30 09:53:00', 1, '', '2017-11-22 17:52:28', '2017-11-22 17:55:39'),
 (4, 'WEDSDA', 'ASDASDASDASD', 100, NULL, 'ALGUIEN', '0414132132', '2018-01-17 06:58:00', '2028-01-17 06:59:00', 1, '', '2018-01-10 18:58:55', '2018-01-10 19:28:55'),
 (5, 'ADSDASD', 'ADADSADSAS', 50, NULL, 'ALGUIEN', '04121231231', '2018-01-17 10:59:00', '2018-01-17 11:00:00', 1, '', '2018-01-10 19:00:12', '2018-01-10 19:50:42'),
-(7, 'ADASDASD', 'DWQDADASDASDAS', 120, NULL, 'ASDAS', '0416457524', '2018-01-25 06:30:00', '2018-01-25 06:31:00', 1, '', '2018-01-16 02:30:49', '2018-01-16 02:30:49'),
-(8, 'DEFENSA DE PROYECTO', 'DEFENSA DE PROYECTO DE 3ER AÑO', 30, 2, 'Heider Daniel Sanchez', '04124373630', '2018-01-25 09:47:00', '2018-01-25 09:48:00', 0, '', '2018-01-16 17:47:28', '2018-01-16 17:47:28'),
-(9, 'DEFENZA', 'PROYECO', 20, 2, 'Heider Daniel Sanchez', '04124373630', '2018-01-31 02:31:00', '2018-01-31 02:32:00', 1, '', '2018-01-16 22:31:23', '2018-01-16 22:32:06');
+(6, 'ALGO', 'ASDASDASDS', 2, 2, 'Heider Daniel Sanchez', '04124373630', '2018-03-05 10:26:00', '2018-03-05 11:26:00', 1, '', '2018-02-26 18:26:52', '2018-02-26 18:27:16'),
+(7, 'DESENCUENTRO', 'ASDASDASDSA', 2, 8, 'Haimar Perez', '04120001111', '2018-03-06 10:52:00', '2018-03-06 10:53:00', 1, '', '2018-02-27 06:52:53', '2018-02-27 07:04:18'),
+(8, 'ALGO', 'ASDASDASD', 123, 8, 'Haimar Perez', '04120001111', '2018-03-08 11:06:00', '2018-03-08 11:07:00', 0, '', '2018-02-27 07:06:08', '2018-02-27 07:06:08'),
+(9, 'DESENCUENTRO', 'ASDASDASDAS', 30, 2, 'Heider Daniel Sanchez', '04124373630', '2018-02-08 12:07:00', '2018-02-08 12:08:00', 1, '', '2001-01-01 08:08:00', '2001-01-01 08:08:34');
 
 -- --------------------------------------------------------
 
@@ -234,8 +220,7 @@ INSERT INTO `humans` (`id`, `cedula`, `nombres`, `apellidos`, `numero_telefono`,
 (4, 4567890, 'Jesús Omar', 'Guevara Rivas', '04124373630', '2017-11-20 23:19:10', '2017-11-20 23:19:10'),
 (5, 8765432, 'Esperanza', 'Castellano', '04124373630', '2017-11-20 23:19:10', '2017-11-20 23:19:10'),
 (6, 121212, 'Saori', 'Kido', '04124373630', '2017-11-20 23:19:10', '2017-11-20 23:19:10'),
-(7, 21026444, 'Mariana', 'Castellanos', '04120001111', '2018-01-08 09:00:00', '2018-01-08 09:00:00'),
-(8, 21026888, 'José Antonio', 'Hernández', '04123568753', NULL, NULL);
+(7, 21026444, 'Haimar', 'Perez', '04120001111', '2018-01-08 09:00:00', '2018-01-08 09:00:00');
 
 -- --------------------------------------------------------
 
@@ -429,50 +414,61 @@ INSERT INTO `internos` (`id`, `user_id`, `modulo`, `tipo`, `detalles`, `created_
 (169, 1, 'Inicio', 'Salida', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha cerrado sesión', '2018-01-10 21:33:10', '2018-01-10 21:33:10'),
 (170, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-01-10 21:33:20', '2018-01-10 21:33:20'),
 (171, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-01-11 00:30:11', '2018-01-11 00:30:11'),
-(172, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-01-13 00:20:11', '2018-01-13 00:20:11'),
-(173, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-01-15 15:24:05', '2018-01-15 15:24:05'),
-(174, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2028-01-15 15:45:02', '2028-01-15 15:45:02'),
-(175, 1, 'Inicio', 'Salida', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha cerrado sesión', '2028-01-15 15:54:08', '2028-01-15 15:54:08'),
-(176, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2028-01-15 15:54:15', '2028-01-15 15:54:15'),
-(177, 1, 'Inicio', 'Salida', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha cerrado sesión', '2028-01-15 15:54:31', '2028-01-15 15:54:31'),
-(178, 2, 'Inicio', 'Entrada', 'El usuario Heider Daniel Sanchez ha iniciado sesión', '2028-01-15 15:54:41', '2028-01-15 15:54:41'),
-(179, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2028-01-15 15:59:51', '2028-01-15 15:59:51'),
-(180, 1, 'Inicio', 'Salida', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha cerrado sesión', '2028-01-15 16:29:37', '2028-01-15 16:29:37'),
-(181, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2028-01-15 16:35:49', '2028-01-15 16:35:49'),
-(182, 1, 'Inicio', 'Salida', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha cerrado sesión', '2028-01-15 16:37:51', '2028-01-15 16:37:51'),
-(183, 7, 'Inicio', 'Entrada', 'El usuario Saori Kido ha iniciado sesión', '2018-01-16 02:13:57', '2018-01-16 02:13:57'),
-(184, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-01-16 02:15:54', '2018-01-16 02:15:54'),
-(185, 1, 'Inicio', 'Prestamos', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha confirmado el préstamo # 6', '2018-01-16 02:29:06', '2018-01-16 02:29:06'),
-(186, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-01-16 06:22:28', '2018-01-16 06:22:28'),
-(187, 1, 'Inicio', 'Salida', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha cerrado sesión', '2018-01-16 06:24:43', '2018-01-16 06:24:43'),
-(188, 2, 'Inicio', 'Entrada', 'El usuario Heider Daniel Sanchez ha iniciado sesión', '2018-01-16 06:24:52', '2018-01-16 06:24:52'),
-(189, 2, 'Inicio', 'Entrada', 'El usuario Heider Daniel Sanchez ha iniciado sesión', '2018-01-16 17:46:36', '2018-01-16 17:46:36'),
-(190, 2, 'Inicio', 'Salida', 'El usuario Heider Daniel Sanchez ha cerrado sesión', '2018-01-16 17:52:21', '2018-01-16 17:52:21'),
-(191, 5, 'Inicio', 'Salida', 'El usuario Esperanza Castellano ha cerrado sesión', '2018-01-16 17:55:03', '2018-01-16 17:55:03'),
-(192, 5, 'Inicio', 'Entrada', 'El usuario Esperanza Castellano ha iniciado sesión', '2018-01-16 17:55:15', '2018-01-16 17:55:15'),
-(193, 5, 'Inicio', 'Salida', 'El usuario Esperanza Castellano ha cerrado sesión', '2018-01-16 17:56:50', '2018-01-16 17:56:50'),
-(194, 4, 'Inicio', 'Entrada', 'El usuario Jesús Omar Guevara Rivas ha iniciado sesión', '2018-01-16 18:36:22', '2018-01-16 18:36:22'),
-(195, 4, 'Inicio', 'Prestamos', 'El usuario Jesús Omar Guevara Rivas ha almacenado el préstamo # 11', '2018-01-16 18:36:30', '2018-01-16 18:36:30'),
-(196, 4, 'Inicio', 'Salida', 'El usuario Jesús Omar Guevara Rivas ha cerrado sesión', '2018-01-16 18:36:39', '2018-01-16 18:36:39'),
-(197, 7, 'Inicio', 'Entrada', 'El usuario Saori Kido ha iniciado sesión', '2018-01-16 18:36:49', '2018-01-16 18:36:49'),
-(198, 7, 'Inicio', 'Salida', 'El usuario Saori Kido ha cerrado sesión', '2018-01-16 18:36:56', '2018-01-16 18:36:56'),
-(199, 8, 'Inicio', 'Entrada', 'El usuario Mariana Castellanos ha iniciado sesión', '2018-01-16 18:37:03', '2018-01-16 18:37:03'),
-(200, 8, 'Inicio', 'Salida', 'El usuario Mariana Castellanos ha cerrado sesión', '2018-01-16 18:37:12', '2018-01-16 18:37:12'),
-(201, 2, 'Inicio', 'Entrada', 'El usuario Heider Daniel Sanchez ha iniciado sesión', '2018-01-16 18:46:49', '2018-01-16 18:46:49'),
-(202, 2, 'Inicio', 'Salida', 'El usuario Heider Daniel Sanchez ha cerrado sesión', '2018-01-16 18:50:50', '2018-01-16 18:50:50'),
-(203, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-01-16 18:50:58', '2018-01-16 18:50:58'),
-(204, 1, 'Inicio', 'Salida', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha cerrado sesión', '2018-01-16 18:53:54', '2018-01-16 18:53:54'),
-(205, 3, 'Inicio', 'Entrada', 'El usuario Geovanny Jesus Abbinante ha iniciado sesión', '2018-01-16 18:54:03', '2018-01-16 18:54:03'),
-(206, 3, 'Inicio', 'Salida', 'El usuario Geovanny Jesus Abbinante ha cerrado sesión', '2018-01-16 18:54:09', '2018-01-16 18:54:09'),
-(207, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-01-16 19:50:48', '2018-01-16 19:50:48'),
-(208, 2, 'Inicio', 'Entrada', 'El usuario Heider Daniel Sanchez ha iniciado sesión', '2018-01-16 22:27:29', '2018-01-16 22:27:29'),
-(209, 2, 'Inicio', 'Prestamos', 'El usuario Heider Daniel Sanchez ha almacenado el préstamo # 12', '2018-01-16 22:27:34', '2018-01-16 22:27:34'),
-(210, 2, 'Inicio', 'Prestamos', 'El usuario Heider Daniel Sanchez ha cancelado el préstamo # 12', '2018-01-16 22:28:07', '2018-01-16 22:28:07'),
-(211, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-01-16 22:28:40', '2018-01-16 22:28:40'),
-(212, 1, 'Inicio', 'Prestamos', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha descartado el préstamo # 12', '2018-01-16 22:29:07', '2018-01-16 22:29:07'),
-(213, 1, 'Inicio', 'Prestamos', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha confirmado el préstamo # 8', '2018-01-16 22:29:18', '2018-01-16 22:29:18'),
-(214, 1, 'Inicio', 'Prestamos', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha finalizado el préstamo # 10', '2018-01-16 22:30:08', '2018-01-16 22:30:08'),
-(215, 1, 'Inicio', 'Eventos', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha almacenado el préstamo # 9', '2018-01-16 22:32:06', '2018-01-16 22:32:06');
+(172, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-02-26 18:14:09', '2018-02-26 18:14:09'),
+(173, 8, 'Inicio', 'Entrada', 'El usuario Mariana Castellanos ha iniciado sesión', '2018-02-26 18:14:57', '2018-02-26 18:14:57'),
+(174, 1, 'Inicio', 'Salida', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha cerrado sesión', '2018-02-26 18:18:26', '2018-02-26 18:18:26'),
+(175, 2, 'Inicio', 'Entrada', 'El usuario Heider Daniel Sanchez ha iniciado sesión', '2018-02-26 18:18:34', '2018-02-26 18:18:34'),
+(176, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-02-26 18:24:25', '2018-02-26 18:24:25'),
+(177, 2, 'Inicio', 'Entrada', 'El usuario Heider Daniel Sanchez ha iniciado sesión', '2018-02-26 18:24:58', '2018-02-26 18:24:58'),
+(178, 1, 'Inicio', 'Usuarios', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha modificado privilegios del usuario # 2', '2018-02-26 18:25:36', '2018-02-26 18:25:36'),
+(179, 2, 'Inicio', 'Eventos', 'El usuario Heider Daniel Sanchez ha solicitado el evento ALGO', '2018-02-26 18:26:51', '2018-02-26 18:26:51'),
+(180, 1, 'Inicio', 'Eventos', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha confirmado el evento ALGO', '2018-02-26 18:27:16', '2018-02-26 18:27:16'),
+(181, 8, 'Inicio', 'Entrada', 'El usuario Mariana Castellanos ha iniciado sesión', '2018-02-27 06:51:57', '2018-02-27 06:51:57'),
+(182, 8, 'Inicio', 'Eventos', 'El usuario Mariana Castellanos ha solicitado el evento DESENCUENTRO', '2018-02-27 06:52:53', '2018-02-27 06:52:53'),
+(183, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-02-27 07:04:03', '2018-02-27 07:04:03'),
+(184, 1, 'Inicio', 'Eventos', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha confirmado el evento DESENCUENTRO', '2018-02-27 07:04:19', '2018-02-27 07:04:19'),
+(185, 1, 'Inicio', 'Prestamos', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha confirmado el préstamo # 6', '2018-02-27 07:04:44', '2018-02-27 07:04:44'),
+(186, 1, 'Inicio', 'Prestamos', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha finalizado el préstamo # 4', '2018-02-27 07:04:53', '2018-02-27 07:04:53'),
+(187, 1, 'Inicio', 'Prestamos', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha finalizado el préstamo # 6', '2018-02-27 07:05:02', '2018-02-27 07:05:02'),
+(188, 8, 'Inicio', 'Prestamos', 'El usuario Mariana Castellanos ha almacenado el préstamo # 11', '2018-02-27 07:05:13', '2018-02-27 07:05:13'),
+(189, 1, 'Inicio', 'Prestamos', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha confirmado el préstamo # 11', '2018-02-27 07:05:30', '2018-02-27 07:05:30'),
+(190, 8, 'Inicio', 'Eventos', 'El usuario Mariana Castellanos ha solicitado el evento ALGO', '2018-02-27 07:06:08', '2018-02-27 07:06:08'),
+(191, 8, 'Inicio', 'Salida', 'El usuario Mariana Castellanos ha cerrado sesión', '2018-02-27 07:28:07', '2018-02-27 07:28:07'),
+(192, 2, 'Inicio', 'Entrada', 'El usuario Heider Daniel Sanchez ha iniciado sesión', '2001-01-01 08:03:39', '2001-01-01 08:03:39'),
+(193, 2, 'Inicio', 'Entrada', 'El usuario Heider Daniel Sanchez ha iniciado sesión', '2001-01-01 08:05:17', '2001-01-01 08:05:17'),
+(194, 2, 'Inicio', 'Eventos', 'El usuario Heider Daniel Sanchez ha solicitado el evento DESENCUENTRO', '2001-01-01 08:08:00', '2001-01-01 08:08:00'),
+(195, 1, 'Inicio', 'Eventos', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha confirmado el evento DESENCUENTRO', '2001-01-01 08:08:34', '2001-01-01 08:08:34'),
+(196, 2, 'Inicio', 'Salida', 'El usuario Heider Daniel Sanchez ha cerrado sesión', '2001-01-01 08:12:44', '2001-01-01 08:12:44'),
+(197, 8, 'Inicio', 'Entrada', 'El usuario Mariana Castellanos ha iniciado sesión', '2018-02-27 23:27:10', '2018-02-27 23:27:10'),
+(198, 8, 'Inicio', 'Entrada', 'El usuario Mariana Castellanos ha iniciado sesión', '2018-02-27 23:28:10', '2018-02-27 23:28:10'),
+(199, 8, 'Inicio', 'Salida', 'El usuario Mariana Castellanos ha cerrado sesión', '2018-02-27 23:28:24', '2018-02-27 23:28:24'),
+(200, 2, 'Inicio', 'Entrada', 'El usuario Heider Daniel Sanchez ha iniciado sesión', '2018-02-27 23:28:32', '2018-02-27 23:28:32'),
+(201, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-02-27 23:31:11', '2018-02-27 23:31:11'),
+(202, 1, 'Inicio', 'Registro', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha registrado  el ejemplar  del libro100 años de soledad', '2018-02-27 23:32:56', '2018-02-27 23:32:56'),
+(203, 1, 'Inicio', 'Registro', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha registrado  el ejemplar  del libro100 años de soledad', '2018-02-27 23:33:00', '2018-02-27 23:33:00'),
+(204, 1, 'Inicio', 'Registro', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha registrado  el ejemplar  del libroPROGRAMA EN CLIPS, MEDICINA', '2018-02-27 23:33:22', '2018-02-27 23:33:22'),
+(205, 1, 'Inicio', 'Registro', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha registrado  el ejemplar  del libroPROGRAMA EN CLIPS, MEDICINA', '2018-02-27 23:33:27', '2018-02-27 23:33:27'),
+(206, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-03-20 16:42:33', '2018-03-20 16:42:33'),
+(207, 2, 'Inicio', 'Entrada', 'El usuario Heider Daniel Sanchez ha iniciado sesión', '2018-03-29 18:59:52', '2018-03-29 18:59:52'),
+(208, 2, 'Inicio', 'Salida', 'El usuario Heider Daniel Sanchez ha cerrado sesión', '2018-03-29 19:24:25', '2018-03-29 19:24:25'),
+(209, 2, 'Inicio', 'Entrada', 'El usuario Heider Daniel Sanchez ha iniciado sesión', '2018-03-29 19:27:16', '2018-03-29 19:27:16'),
+(210, 2, 'Inicio', 'Salida', 'El usuario Heider Daniel Sanchez ha cerrado sesión', '2018-03-29 19:34:06', '2018-03-29 19:34:06'),
+(211, 2, 'Inicio', 'Entrada', 'El usuario Heider Daniel Sanchez ha iniciado sesión', '2018-03-29 19:35:49', '2018-03-29 19:35:49'),
+(212, 2, 'Inicio', 'Salida', 'El usuario Heider Daniel Sanchez ha cerrado sesión', '2018-03-29 19:36:01', '2018-03-29 19:36:01'),
+(213, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-03-29 19:36:09', '2018-03-29 19:36:09'),
+(214, 1, 'Inicio', 'Salida', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha cerrado sesión', '2018-03-29 19:43:28', '2018-03-29 19:43:28'),
+(215, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-04-06 02:42:32', '2018-04-06 02:42:32'),
+(216, 1, 'Inicio', 'Salida', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha cerrado sesión', '2018-04-06 02:45:39', '2018-04-06 02:45:39'),
+(217, 8, 'Inicio', 'Entrada', 'El usuario Haimar Perez ha iniciado sesión', '2018-04-06 02:46:02', '2018-04-06 02:46:02'),
+(218, 8, 'Inicio', 'Salida', 'El usuario Haimar Perez ha cerrado sesión', '2018-04-06 02:47:18', '2018-04-06 02:47:18'),
+(219, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-04-06 02:51:35', '2018-04-06 02:51:35'),
+(220, 1, 'Inicio', 'Salida', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha cerrado sesión', '2018-04-06 02:55:40', '2018-04-06 02:55:40'),
+(221, 3, 'Inicio', 'Salida', 'El usuario Geovanny Jesus Abbinante ha cerrado sesión', '2018-04-06 02:56:33', '2018-04-06 02:56:33'),
+(222, 3, 'Inicio', 'Entrada', 'El usuario Geovanny Jesus Abbinante ha iniciado sesión', '2018-04-06 02:56:39', '2018-04-06 02:56:39'),
+(223, 3, 'Inicio', 'Salida', 'El usuario Geovanny Jesus Abbinante ha cerrado sesión', '2018-04-06 02:56:47', '2018-04-06 02:56:47'),
+(224, 1, 'Inicio', 'Entrada', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha iniciado sesión', '2018-04-06 02:56:53', '2018-04-06 02:56:53'),
+(225, 1, 'Inicio', 'Prestamos', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha confirmado el préstamo # 7', '2018-04-06 02:57:13', '2018-04-06 02:57:13'),
+(226, 1, 'Inicio', 'Prestamos', 'El usuario Jhosnoirlit Gabriela Hernandez Castillo ha finalizado el préstamo # 7', '2018-04-06 02:57:21', '2018-04-06 02:57:21');
 
 -- --------------------------------------------------------
 
@@ -495,32 +491,29 @@ CREATE TABLE `items` (
 
 INSERT INTO `items` (`id`, `book_id`, `estado_item`, `correlativo`, `created_at`, `updated_at`) VALUES
 (1, 1, 'DISPONIBLE', '1', NULL, NULL),
-(2, 2, 'AUSENTE', '1', NULL, '2018-01-16 02:29:06'),
-(3, 2, 'DISPONIBLE', '2', NULL, '2018-01-16 22:29:07'),
+(2, 2, 'AUSENTE', '1', NULL, '2018-02-27 07:05:30'),
+(3, 2, 'DISPONIBLE', '2', NULL, NULL),
 (4, 2, 'DISPONIBLE', '3', NULL, NULL),
 (5, 3, 'DISPONIBLE', '1', NULL, '2017-11-22 17:55:12'),
 (6, 3, 'DISPONIBLE', '2', NULL, NULL),
 (7, 3, 'DISPONIBLE', '3', NULL, NULL),
-(8, 4, 'DISPONIBLE', '1', NULL, '2018-01-16 22:30:08'),
+(8, 4, 'AUSENTE', '1', NULL, '2018-01-10 20:18:37'),
 (9, 4, 'DISPONIBLE', '2', NULL, NULL),
 (10, 4, 'DISPONIBLE', '3', NULL, NULL),
-(11, 5, 'DISPONIBLE', '1', NULL, '2018-01-16 02:29:03'),
-(12, 5, 'AUSENTE', '2', NULL, '2018-01-16 22:29:18'),
+(11, 5, 'DISPONIBLE', '1', NULL, '2018-04-06 02:57:21'),
+(12, 5, 'DISPONIBLE', '2', NULL, '2018-02-27 07:04:40'),
 (13, 5, 'DISPONIBLE', '3', NULL, NULL),
 (14, 5, 'DISPONIBLE', '4', NULL, NULL),
-(15, 6, 'AUSENTE', '1', NULL, '2017-11-22 17:54:21'),
+(15, 6, 'DISPONIBLE', '1', NULL, '2018-02-27 07:04:53'),
 (16, 6, 'DISPONIBLE', '2', NULL, NULL),
 (17, 6, 'DISPONIBLE', '3', NULL, NULL),
 (18, 7, 'DISPONIBLE', '5146541', '2017-11-22 17:06:02', '2017-11-22 17:06:02'),
 (19, 8, 'DISPONIBLE', '1278728', '2017-11-22 17:09:12', '2017-11-22 17:09:12'),
 (20, 9, 'DISPONIBLE', '32312', '2017-11-22 18:38:50', '2017-11-22 18:38:50'),
-(21, 2, 'DISPONIBLE', '4147254524', '2018-01-16 02:32:48', '2018-01-16 02:32:48'),
-(22, 10, 'SOLICITADO', '1513215', '2018-01-16 06:24:35', '2018-01-16 18:36:30'),
-(23, 10, 'DISPONIBLE', '215151', '2018-01-16 17:50:34', '2018-01-16 17:50:34'),
-(24, 10, 'DISPONIBLE', '42545245', '2018-01-16 17:51:16', '2018-01-16 17:51:16'),
-(25, 10, 'DISPONIBLE', '42425', '2018-01-16 17:51:23', '2018-01-16 17:51:23'),
-(26, 11, 'DISPONIBLE', '3456754', '2018-01-16 22:51:20', '2018-01-16 22:51:20'),
-(27, 2, 'DISPONIBLE', '34567897', '2018-01-16 22:52:38', '2018-01-16 22:52:38');
+(21, 2, 'DISPONIBLE', '4', '2018-02-27 23:32:56', '2018-02-27 23:32:56'),
+(22, 2, 'DISPONIBLE', '5', '2018-02-27 23:33:00', '2018-02-27 23:33:00'),
+(23, 9, 'DISPONIBLE', '32313', '2018-02-27 23:33:22', '2018-02-27 23:33:22'),
+(24, 9, 'DISPONIBLE', '32314', '2018-02-27 23:33:27', '2018-02-27 23:33:27');
 
 -- --------------------------------------------------------
 
@@ -552,13 +545,13 @@ INSERT INTO `loans` (`id`, `estado`, `item_id`, `user_id`, `nombre_responsable`,
 (1, 'DEVUELTO', 2, 2, NULL, NULL, NULL, '2017-11-29 00:00:00', '2017-11-22 01:55:02', 1, '', '2017-11-22 17:52:43', '2017-11-22 17:55:02'),
 (2, 'DEVUELTO', 5, 2, NULL, NULL, NULL, '2017-11-29 00:00:00', '2017-11-22 01:55:12', 1, '', '2017-11-22 17:52:47', '2017-11-22 17:55:12'),
 (3, 'DEVUELTO', 8, 2, NULL, NULL, NULL, '2017-11-29 00:00:00', '2017-11-22 01:55:18', 1, '', '2017-11-22 17:52:52', '2017-11-22 17:55:18'),
-(4, 'SIN DEVOLVER', 15, 3, NULL, NULL, NULL, '2017-11-29 00:00:00', NULL, 1, '', '2017-11-22 17:53:16', '2017-11-22 17:54:21'),
+(4, 'DEVUELTO', 15, 3, NULL, NULL, NULL, '2017-11-29 00:00:00', '2018-02-27 03:04:52', 1, '', '2017-11-22 17:53:16', '2018-02-27 07:04:52'),
 (5, 'DEVUELTO', 11, 3, NULL, NULL, NULL, '2017-11-29 00:00:00', '2017-11-22 01:54:12', 1, '', '2017-11-22 17:53:19', '2017-11-22 17:54:12'),
-(6, 'SIN DEVOLVER', 2, 3, NULL, NULL, NULL, '2018-01-20 00:00:00', NULL, 1, '', '2018-01-08 10:01:33', '2018-01-16 02:29:06'),
-(7, 'SIN RETIRAR', 11, 3, NULL, NULL, NULL, '2018-01-11 00:00:00', NULL, 1, '', '2018-01-08 10:01:40', '2018-01-08 10:01:40'),
-(8, 'SIN DEVOLVER', 12, 2, NULL, NULL, NULL, '2018-01-23 00:00:00', NULL, 1, '', '2018-01-08 16:17:57', '2018-01-16 22:29:17'),
-(10, 'DEVUELTO', 8, 7, NULL, NULL, NULL, '2018-01-17 00:00:00', '2018-01-16 06:30:07', 1, 'rayas', '2018-01-10 20:18:37', '2018-01-16 22:30:07'),
-(11, 'SIN RETIRAR', 22, 4, NULL, NULL, NULL, '2018-01-19 00:00:00', NULL, 1, '', '2018-01-16 18:36:30', '2018-01-16 18:36:30');
+(6, 'DEVUELTO', 2, 3, NULL, NULL, NULL, '2018-03-06 00:00:00', '2018-02-27 03:05:02', 1, '', '2018-01-08 10:01:33', '2018-02-27 07:05:02'),
+(7, 'DEVUELTO', 11, 3, NULL, NULL, NULL, '2018-04-12 00:00:00', '2018-04-05 10:57:21', 1, '', '2018-01-08 10:01:40', '2018-04-06 02:57:21'),
+(8, 'SIN RETIRAR', 12, 2, NULL, NULL, NULL, '2018-01-11 00:00:00', NULL, 1, '', '2018-01-08 16:17:57', '2018-01-08 16:17:57'),
+(10, 'SIN DEVOLVER', 8, 7, NULL, NULL, NULL, '2018-01-17 00:00:00', NULL, 1, '', '2018-01-10 20:18:37', '2018-01-10 20:18:37'),
+(11, 'SIN DEVOLVER', 2, 8, NULL, NULL, NULL, '2018-03-06 00:00:00', NULL, 1, '', '2018-02-27 07:05:13', '2018-02-27 07:05:30');
 
 -- --------------------------------------------------------
 
@@ -631,11 +624,17 @@ INSERT INTO `notifications` (`id`, `user_id`, `event_id`, `loan_request_id`, `vi
 (12, 1, NULL, 8, 1, '2018-01-08 16:17:58', '2018-01-10 20:10:21'),
 (13, 1, 4, NULL, 1, '2018-01-10 18:58:56', '2018-01-10 19:00:34'),
 (14, 1, 5, NULL, 1, '2018-01-10 19:00:12', '2018-01-10 19:00:34'),
-(15, 1, 6, NULL, 1, '2018-01-13 00:55:24', '2018-01-13 00:55:31'),
-(16, 1, 8, NULL, 1, '2018-01-16 17:47:28', '2018-01-16 22:31:31'),
-(17, 1, NULL, 11, 1, '2018-01-16 18:36:30', '2018-01-16 22:28:54'),
-(18, 1, NULL, 12, 1, '2018-01-16 22:27:34', '2018-01-16 22:28:54'),
-(19, 1, 9, NULL, 1, '2018-01-16 22:31:23', '2018-01-16 22:31:31');
+(15, 1, 6, NULL, 1, '2018-02-26 18:26:52', '2018-02-26 18:27:02'),
+(16, 2, NULL, 6, 0, '2018-02-26 18:27:16', '2018-02-26 18:27:16'),
+(17, 1, 7, NULL, 1, '2018-02-27 06:52:53', '2018-02-27 07:04:13'),
+(18, 8, 7, NULL, 1, '2018-02-27 07:04:19', '2018-02-27 07:05:48'),
+(19, 3, NULL, 6, 0, '2018-02-27 07:04:44', '2018-02-27 07:04:44'),
+(20, 1, NULL, 11, 1, '2018-02-27 07:05:13', '2018-02-27 07:05:20'),
+(21, 8, NULL, 11, 0, '2018-02-27 07:05:30', '2018-02-27 07:05:30'),
+(22, 1, 8, NULL, 1, '2018-02-27 07:06:08', '2001-01-01 08:08:25'),
+(23, 1, 9, NULL, 1, '2001-01-01 08:08:00', '2001-01-01 08:08:25'),
+(24, 2, 9, NULL, 0, '2001-01-01 08:08:34', '2001-01-01 08:08:34'),
+(25, 3, NULL, 7, 0, '2018-04-06 02:57:13', '2018-04-06 02:57:13');
 
 -- --------------------------------------------------------
 
@@ -690,6 +689,10 @@ INSERT INTO `privilegios` (`id`, `user_id`, `modulo`, `accion`, `url_privilegio`
 (30, 6, 'Libros', 'Mis Préstamos', 'http://localhost/bivlu/public/prestamos', '2017-11-27 22:17:55', '2017-11-27 22:17:55'),
 (31, 6, 'Libros', 'Histórico de Préstamos', 'http://localhost/bivlu/public/historial', '2017-11-27 22:17:55', '2017-11-27 22:17:55'),
 (32, 6, 'Actividades', NULL, 'http://localhost/bivlu/public/actividades', '2017-11-27 22:17:55', '2017-11-27 22:17:55'),
+(37, 7, 'Libros', 'Mis Solicitudes', 'http://localhost/bivlu/public/virtuales', '2017-11-27 22:44:25', '2017-11-27 22:44:25'),
+(38, 7, 'Libros', 'Mis Préstamos', 'http://localhost/bivlu/public/prestamos', '2017-11-27 22:44:25', '2017-11-27 22:44:25'),
+(39, 7, 'Libros', 'Histórico de Préstamos', 'http://localhost/bivlu/public/historial', '2017-11-27 22:44:25', '2017-11-27 22:44:25'),
+(40, 7, 'Actividades', NULL, 'http://localhost/bivlu/public/actividades', '2017-11-27 22:44:25', '2017-11-27 22:44:25'),
 (77, 4, 'Libros', 'Mis Solicitudes', 'http://localhost/bivlu/public/virtuales', '2017-11-27 22:50:55', '2017-11-27 22:50:55'),
 (78, 4, 'Libros', 'Mis Préstamos', 'http://localhost/bivlu/public/prestamos', '2017-11-27 22:50:55', '2017-11-27 22:50:55'),
 (79, 4, 'Libros', 'Histórico de Préstamos', 'http://localhost/bivlu/public/historial', '2017-11-27 22:50:55', '2017-11-27 22:50:55'),
@@ -722,25 +725,10 @@ INSERT INTO `privilegios` (`id`, `user_id`, `modulo`, `accion`, `url_privilegio`
 (116, 8, 'Libros', 'Mis Préstamos', 'http://localhost/bivlu/public/prestamos', '2018-01-08 12:39:26', '2018-01-08 12:39:26'),
 (117, 8, 'Libros', 'Histórico de Préstamos', 'http://localhost/bivlu/public/historial', '2018-01-08 12:39:26', '2018-01-08 12:39:26'),
 (118, 8, 'Actividades', NULL, 'http://localhost/bivlu/public/actividades', '2018-01-08 12:39:27', '2018-01-08 12:39:27'),
-(127, 7, 'Registro', 'Agregar', '', '2028-01-15 16:01:24', '2028-01-15 16:01:24'),
-(128, 7, 'Registro', 'Modificar', '', '2028-01-15 16:01:24', '2028-01-15 16:01:24'),
-(129, 7, 'Registro', 'Eliminar', '', '2028-01-15 16:01:24', '2028-01-15 16:01:24'),
-(130, 7, 'Registro', 'Agregar Ejemplar', '', '2028-01-15 16:01:24', '2028-01-15 16:01:24'),
-(131, 7, 'Libros', 'Mis Solicitudes', 'http://localhost/bivlu/public/virtuales', '2028-01-15 16:01:24', '2028-01-15 16:01:24'),
-(132, 7, 'Libros', 'Mis Préstamos', 'http://localhost/bivlu/public/prestamos', '2028-01-15 16:01:24', '2028-01-15 16:01:24'),
-(133, 7, 'Libros', 'Histórico de Préstamos', 'http://localhost/bivlu/public/historial', '2028-01-15 16:01:24', '2028-01-15 16:01:24'),
-(134, 7, 'Prestamos', 'Solicitud', 'http://localhost/bivlu/public/virtuales', '2028-01-15 16:01:24', '2028-01-15 16:01:24'),
-(135, 7, 'Actividades', NULL, 'http://localhost/bivlu/public/actividades', '2028-01-15 16:01:24', '2028-01-15 16:01:24'),
-(136, 9, 'Libros', 'Mis Solicitudes', 'http://localhost/bivlu/public/virtuales', '2018-01-16 22:47:20', '2018-01-16 22:47:20'),
-(137, 9, 'Libros', 'Mis Préstamos', 'http://localhost/bivlu/public/prestamos', '2018-01-16 22:47:20', '2018-01-16 22:47:20'),
-(138, 9, 'Libros', 'Histórico de Préstamos', 'http://localhost/bivlu/public/historial', '2018-01-16 22:47:20', '2018-01-16 22:47:20'),
-(139, 9, 'Actividades', NULL, 'http://localhost/bivlu/public/actividades', '2018-01-16 22:47:20', '2018-01-16 22:47:20'),
-(149, 2, 'Libros', 'Mis Solicitudes', 'http://localhost/bivlu/public/virtuales', '2018-01-16 22:48:25', '2018-01-16 22:48:25'),
-(150, 2, 'Libros', 'Mis Préstamos', 'http://localhost/bivlu/public/prestamos', '2018-01-16 22:48:25', '2018-01-16 22:48:25'),
-(151, 2, 'Libros', 'Histórico de Préstamos', 'http://localhost/bivlu/public/historial', '2018-01-16 22:48:25', '2018-01-16 22:48:25'),
-(152, 2, 'Eventos', 'Propuestas', 'http://localhost/bivlu/public/reservaciones', '2018-01-16 22:48:25', '2018-01-16 22:48:25'),
-(153, 2, 'Eventos', 'Pendientes', 'http://localhost/bivlu/public/eventos', '2018-01-16 22:48:25', '2018-01-16 22:48:25'),
-(154, 2, 'Actividades', NULL, 'http://localhost/bivlu/public/actividades', '2018-01-16 22:48:25', '2018-01-16 22:48:25');
+(119, 2, 'Libros', 'Mis Solicitudes', 'http://localhost/bivlu1/public/virtuales', '2018-02-26 18:25:35', '2018-02-26 18:25:35'),
+(120, 2, 'Libros', 'Mis Préstamos', 'http://localhost/bivlu1/public/prestamos', '2018-02-26 18:25:36', '2018-02-26 18:25:36'),
+(121, 2, 'Libros', 'Histórico de Préstamos', 'http://localhost/bivlu1/public/historial', '2018-02-26 18:25:36', '2018-02-26 18:25:36'),
+(122, 2, 'Actividades', NULL, 'http://localhost/bivlu1/public/actividades', '2018-02-26 18:25:36', '2018-02-26 18:25:36');
 
 -- --------------------------------------------------------
 
@@ -788,26 +776,13 @@ INSERT INTO `queries` (`id`, `user_id`, `queried_resource`, `created_at`, `updat
 (25, 8, 'carnet', '2018-01-08 12:53:07', '2018-01-08 12:53:07'),
 (26, 7, 'carnet', '2018-01-08 12:53:24', '2018-01-08 12:53:24'),
 (27, 2, 'carnet', '2018-01-08 15:18:57', '2018-01-08 15:18:57'),
-(28, 7, 'carnet', '2028-01-15 16:07:20', '2028-01-15 16:07:20'),
-(29, 7, 'carnet', '2028-01-15 16:08:25', '2028-01-15 16:08:25'),
-(30, 2, 'carnet', '2028-01-15 16:08:51', '2028-01-15 16:08:51'),
-(31, 3, 'carnet', '2028-01-15 16:09:09', '2028-01-15 16:09:09'),
-(32, 8, 'carnet', '2028-01-15 16:10:33', '2028-01-15 16:10:33'),
-(33, 8, 'carnet', '2018-01-16 02:31:07', '2018-01-16 02:31:07'),
-(34, 8, 'solvencia', '2018-01-16 02:31:11', '2018-01-16 02:31:11'),
-(35, 8, 'solvencia', '2018-01-16 02:31:13', '2018-01-16 02:31:13'),
-(36, 8, 'solvencia', '2018-01-16 02:31:14', '2018-01-16 02:31:14'),
-(37, 8, 'solvencia', '2018-01-16 02:31:14', '2018-01-16 02:31:14'),
-(38, 8, 'carnet', '2018-01-16 17:47:46', '2018-01-16 17:47:46'),
-(39, 8, 'solvencia', '2018-01-16 17:47:53', '2018-01-16 17:47:53'),
-(40, 8, 'solvencia', '2018-01-16 17:47:55', '2018-01-16 17:47:55'),
-(41, 8, 'solvencia', '2018-01-16 17:47:57', '2018-01-16 17:47:57'),
-(42, 8, 'solvencia', '2018-01-16 17:47:58', '2018-01-16 17:47:58'),
-(43, 8, 'carnet', '2018-01-16 22:37:08', '2018-01-16 22:37:08'),
-(44, 7, 'carnet', '2018-01-16 22:38:55', '2018-01-16 22:38:55'),
-(45, 7, 'solvencia', '2018-01-16 22:39:40', '2018-01-16 22:39:40'),
-(46, 7, 'solvencia', '2018-01-16 22:39:41', '2018-01-16 22:39:41'),
-(47, 2, 'solvencia', '2018-01-16 22:40:38', '2018-01-16 22:40:38');
+(28, 2, 'carnet', '2018-02-27 23:34:22', '2018-02-27 23:34:22'),
+(29, 8, 'solvencia', '2018-04-06 02:52:54', '2018-04-06 02:52:54'),
+(30, 7, 'carnet', '2018-04-06 02:55:01', '2018-04-06 02:55:01'),
+(31, 2, 'carnet', '2018-04-06 02:55:14', '2018-04-06 02:55:14'),
+(32, 3, 'solvencia', '2018-04-06 02:55:29', '2018-04-06 02:55:29'),
+(33, 3, 'solvencia', '2018-04-06 02:57:37', '2018-04-06 02:57:37'),
+(34, 3, 'solvencia', '2018-04-06 02:57:39', '2018-04-06 02:57:39');
 
 -- --------------------------------------------------------
 
@@ -880,10 +855,7 @@ INSERT INTO `tags` (`id`, `palabras`, `created_at`, `updated_at`) VALUES
 (6, 'INFORMATICA', '2017-11-22 17:09:12', '2017-11-22 17:09:12'),
 (7, 'TRAYECTO 3', '2017-11-22 17:09:12', '2017-11-22 17:09:12'),
 (8, 'AI', '2017-11-22 18:38:50', '2017-11-22 18:38:50'),
-(9, '', '2017-12-05 01:01:32', '2017-12-05 01:01:32'),
-(10, 'INTRIGA', '2018-01-16 06:24:35', '2018-01-16 06:24:35'),
-(11, 'POLICIACO', '2018-01-16 06:24:35', '2018-01-16 06:24:35'),
-(12, 'BASICO', '2018-01-16 22:51:20', '2018-01-16 22:51:20');
+(9, '', '2017-12-05 01:01:32', '2017-12-05 01:01:32');
 
 -- --------------------------------------------------------
 
@@ -923,14 +895,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `user_level`, `password`, `domanda_di_securida`, `answer`, `human_id`, `photo`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Jhosnoirlit', 'jhosno@gmail.com', 'admin', '$2y$10$i6boBViEJDlDQyLyiqNAA.FgQKJVKq5JcwKsa7uX/RxH/4516BPx.', 'Nombre de su software', '8bde8092064e49750622cda3e74191a9', 1, 'f54ecfd098dad8ab9fefd278e18c7395.jpg', 'ufeYBU9nsL05BXrm7hXFVELvsspsIc6nps1qg948a0Kr4XWcxyfAcZubUSXr', '2017-11-20 23:19:11', '2018-01-08 12:35:50'),
-(2, 'Daniel', 'daniel@gmail.com', 'estudiante', '$2y$10$EXE2zd1LJxeZDeJjKk3pC..IYRuiVTTeuEOHU.JQvBl.YjqDpSFYC', 'Nombre de la mascota', '8BDE8092064E49750622CDA3E74191A9', 2, 'f2ace89313c1d6b2c14a473b1039f3fa.jpg', 'eukhIB9cUUlJMSWaTEO4I1lQUBG0Et6issImauJ2h7kPhYFawhwM642rrcPl', '2017-11-20 23:19:11', '2018-01-08 15:07:21'),
-(3, 'Geovanny', 'geovanny@gmail.com', 'estudiante', '$2y$10$/7INmhRFQg7.BJvwOxfZau4j5xgK0Sc2p2aAxpnffEPUlm5VkOWci', 'Nombre de la mascota', '8BDE8092064E49750622CDA3E74191A9', 3, '', 'TNB08P894HZfzwfS7myH3UALv4xk6Ek9g0OE8OpXK4CYGMmb48lJW0JKA7OJ', '2017-11-20 23:19:11', '2017-11-20 23:19:11'),
-(4, 'Jesús', 'yisus@gmail.com', 'profesor', '$2y$10$oAj2E7ICncXJmAtffjZp4uUmpHL.WV7HIA7kQjHDIGnUVKNZmEHgy', 'Nombre de la mascota', '8BDE8092064E49750622CDA3E74191A9', 4, 'b2650aaa26715ae1be98e5796b4d7d8f.jpg', 'dyRf0DqEKhEDZkVElsQPVzBv1OoKP6EGFTODSppH8LN8fglYAtK0vV4T3HFB', '2017-11-20 23:19:11', '2017-11-27 22:53:04'),
-(5, 'Esperanza', 'ecastellanos@gmail.com', 'jefe', '$2y$10$7w04MpIgbjJ/k9BCAUP1yOjS7i0TD/aPPE.aL3yUr1ctN53qoUoKa', 'Nombre de la mascota', '8BDE8092064E49750622CDA3E74191A9', 5, '', 'ISAckG4s6XNDL7BIT8qcXiREECMT417qCN81DbDLhqTTHULWFy8cwJjuWycr', '2017-11-20 23:19:12', '2017-11-20 23:19:12'),
-(7, 'Saori', 'skido@gmail.com', 'estudiante', '$2y$10$npjzByWNyC3JdfAuPJCDb.res/MGv7K9to05zPjMLU.i31uXMvotC', 'Nombre de la mascota', '8BDE8092064E49750622CDA3E74191A9', 6, '4f688764695372cbad1503a3aeee58c4.jpg', 'lqFTtAZhwVaYIcY2B9KYuvzKjYxZSSaSBhRWYrNzAbop5QZkvQFtfsG6Qi0M', '2017-11-27 22:44:25', '2018-01-08 12:46:30'),
-(8, 'Mariana', 'mcastellanos@gmail.com', 'estudiante', '$2y$10$33tZHm9/Anef1f0NpgUTCuIU.kJtDyu.kww54aae5/jSyl9lPyBau', 'Nombre de la mascota', '8BDE8092064E49750622CDA3E74191A9', 7, '9166420a673e9fa3393df831d91f14db.png', 'kAuZNI05RwFsjc3qzI05WZsYPaJJOIYI9eflR8GwgHkpav2Fpog3KwbG4RM5', '2018-01-08 12:39:26', '2018-01-08 12:41:16'),
-(9, 'José Antonio', 'josan@gmail.com', 'estudiante', '$2y$10$kdLDk23fvhdCvqoroZzUL.W5Gjppcxjn0I9uP9sKhhZDD1EJ8B1J6', 'Nombre de la mascota', '', 8, '', NULL, '2018-01-16 22:47:20', '2018-01-16 22:47:20');
+(1, 'Jhosnoirlit', 'jhosno@gmail.com', 'admin', '$2y$10$i6boBViEJDlDQyLyiqNAA.FgQKJVKq5JcwKsa7uX/RxH/4516BPx.', 'Nombre de su software', '8bde8092064e49750622cda3e74191a9', 1, 'f54ecfd098dad8ab9fefd278e18c7395.jpg', 'BzorosmXUjS0Sa98kKw8LwnAJQFB3cSYmln1y1PQNGCeVUx8u7mERzQdb9Cb', '2017-11-20 23:19:11', '2018-01-08 12:35:50'),
+(2, 'Daniel', 'jhosnoirlit@gmail.com', 'estudiante', '$2y$10$uZONUH9Y5TcOVN.ZOhc8q.pvujKqvNOUSm8oTqAQlYBewE4FepSB2', 'Postre favorito', '7be31221bc34731d5b578612abdfc24f', 2, 'f2ace89313c1d6b2c14a473b1039f3fa.jpg', 'dogTrdjYvDFAmMhanFTEBQTgtdxTJiuwLf6EZNvavxpsR57POL8QcH3pRpzE', '2017-11-20 23:19:11', '2018-03-29 19:34:31'),
+(3, 'Geovanny', 'geovanny@gmail.com', 'estudiante', '$2y$10$/7INmhRFQg7.BJvwOxfZau4j5xgK0Sc2p2aAxpnffEPUlm5VkOWci', 'Nombre de la mascota', '8bde8092064e49750622cda3e74191a9', 3, '', 'UR5v3y2LIFi1X0t3ARReWv0mnd8741DiEcx1HxMwLGSmJZz5nhAmtcE7FSGr', '2017-11-20 23:19:11', '2017-11-20 23:19:11'),
+(4, 'Jesús', 'yisus@gmail.com', 'profesor', '$2y$10$oAj2E7ICncXJmAtffjZp4uUmpHL.WV7HIA7kQjHDIGnUVKNZmEHgy', 'Nombre de la mascota', '8bde8092064e49750622cda3e74191a9', 4, 'b2650aaa26715ae1be98e5796b4d7d8f.jpg', 'flKez7xNHRSe5fPCw7FHkeehLX6ngmcrKGSH3Jr6cDIaaATpSnVCIoQmQavA', '2017-11-20 23:19:11', '2017-11-27 22:53:04'),
+(5, 'Ivan', 'ivan@gmail.com', 'jefe', '$2y$10$7w04MpIgbjJ/k9BCAUP1yOjS7i0TD/aPPE.aL3yUr1ctN53qoUoKa', 'Nombre de la mascota', '8bde8092064e49750622cda3e74191a9', 5, '', NULL, '2017-11-20 23:19:12', '2017-11-20 23:19:12'),
+(7, 'Saori', 'skido@gmail.com', 'estudiante', '$2y$10$npjzByWNyC3JdfAuPJCDb.res/MGv7K9to05zPjMLU.i31uXMvotC', 'Nombre de la mascota', '8bde8092064e49750622cda3e74191a9', 6, '4f688764695372cbad1503a3aeee58c4.jpg', 'NeNgi9W57Wo5zakur1LRlRbk0s12IK3X5YCW48ITk4Abf9cbYBpP7QCBihvD', '2017-11-27 22:44:25', '2018-01-08 12:46:30'),
+(8, 'Haimar', 'hperez@gmail.com', 'estudiante', '$2y$10$33tZHm9/Anef1f0NpgUTCuIU.kJtDyu.kww54aae5/jSyl9lPyBau', 'Nombre de la mascota', '', 7, '09756032ef4094658e2ae6bfda12596a.jpg', 'f4SPUOEBfuyxGZ5gGmT6815Mol8qdwcheE9FTforKK79gEyG9yjNlSihx3w9', '2018-01-08 12:39:26', '2018-04-06 02:47:07');
 
 --
 -- Índices para tablas volcadas
@@ -1052,22 +1023,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `authors`
 --
 ALTER TABLE `authors`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `author_book`
 --
 ALTER TABLE `author_book`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `book_tag`
 --
 ALTER TABLE `book_tag`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `events`
 --
@@ -1077,17 +1048,17 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT de la tabla `humans`
 --
 ALTER TABLE `humans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `internos`
 --
 ALTER TABLE `internos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=216;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
 --
 -- AUTO_INCREMENT de la tabla `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT de la tabla `loans`
 --
@@ -1102,17 +1073,17 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `privilegios`
 --
 ALTER TABLE `privilegios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 --
 -- AUTO_INCREMENT de la tabla `queries`
 --
 ALTER TABLE `queries`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT de la tabla `specialities`
 --
@@ -1127,7 +1098,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT de la tabla `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `teachers`
 --
@@ -1137,7 +1108,7 @@ ALTER TABLE `teachers`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
