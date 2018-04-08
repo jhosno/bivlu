@@ -63,6 +63,7 @@ Route::get('recuperacion', function(){
 Route::post('recuperacion', 'UserController@fetchQuestion'); 
 Route::put('recuperacion', 'UserController@ask4Pass'); 
 Route::post('recuperar', 'UserController@reset'); 
+Route::post('sugerencia', 'UserController@suggestions'); 
 
 Route::get('listados', 'QueryController@listado'); 
 Route::resource('consultas','QueryController');

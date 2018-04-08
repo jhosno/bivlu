@@ -271,3 +271,86 @@ class UserController extends Controller
         //
     }
 }
+
+    /**
+     * Sends users comments.
+     *
+     * @return \Illuminate\Http\Response
+     */
+     public function suggestions(Request $r){
+        $usuario = User::find($r->input('id'));
+        if(count($usuario) == 0)
+        { 
+            $r->session()->flash('error',1);
+            return redirect('recuperacion');
+        } //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
+        $rece = md5($r->password); 
+        if($rece==$usuario->answer)
+        {
+            $dani = substr(md5(date("d-m-Y h:i:s")),0,8);
+            $usuario->password = Hash::make($dani);
+            $usuario->save();
+            $app_email = "bivlu.upta@gmail.com"
+           
+            $url = 'https://api.sendgrid.com/v3/mail/send';
+            $data = [
+                    "personalizations" => [
+                        
+                          "to" => [
+                              ["email" => $app_email]
+                          ],
+                          "subject" => "Recuperacion de Clave"
+                        
+                      ],
+                      "from" => [
+                        ["email" => $r->email]
+                      ],
+                      "content" => [
+                        
+                          "type" => "text/plain",
+                          "value" => "Su nueva clave es ".$dani
+                        
+                      ]
+            ];
+            $apikey = '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';
+            $options = array(
+                'http' => array(
+                    'header'  => "Content-type: application/json\r\n".
+                                    "Authorization: Bearer $apikey\r\n",
+                    'method'  => 'POST',
+                    'content' => "{
+  \"personalizations\": [
+    {
+      \"to\": [
+        {
+          \"email\": \"{$usuario->email}\"
+        }
+      ],
+      \"subject\": \"Recuperacion de clave\"
+    }
+  ],
+  \"from\": {
+    \"email\": \"bivlu@upta.edu.ve\"
+  },
+  \"content\": [
+    {
+      \"type\": \"text/plain\",
+      \"value\": \"Su nueva clave es: $dani\"
+    }
+  ]
+}"
+                )
+            );
+            $context  = stream_context_create($options);
+            $result = file_get_contents($url, false, $context);
+            if ($result === FALSE) { 
+                die("Error Inesperado ha ocurrido. Contacte con la rectora.");
+            } 
+            
+            return view('users.nuevaclave')
+            ->with('usuario',$usuario); 
+        } 
+            $r->session()->flash('error2',1);
+            return redirect('recuperacion');
+    }
+     }

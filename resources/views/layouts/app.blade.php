@@ -38,6 +38,9 @@
                         @if (Auth::guest())
                         <li><a href="{{url('actividades')}}">Actividades</a></li>
                         </li><li><a href="{{url('acerca-de')}}">Nosotros</a></li>
+                        <!-- Suggestions
+                        <li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="{{ url('suggestions') }}" data-target="#suggestions-modal" id="suggestions-trigger">Sugerencias</a></li>
+                    -->
                         <li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="{{ url('login') }}" data-target="#all-modal" ><button id="login-trigger" class="btn btn-raised btn-warning btn-sm">¡Entrar!</button></a></li>
                         <li><a data-toggle="modal"  data-load="{{ url('signup') }}" data-target="#all-modal" ><button id="signup-trigger" class="btn btn-raised btn-warning btn-sm">Registrarse</button></a></li>
                         @elseif(Auth::user()->user_level=='admin')
@@ -92,7 +95,12 @@
                                     <li><a href="{{url('foto') }}">Perfil
                                     </a></li>
                                     <li><a href="{{url('ayuda')}}">Ayuda <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> </a></li>
+                                    <li>Acerca de</li>  
+                                    <!-- suggestion                                 
+                                    <li><a data-toggle="modal" data-titulo="Sugerencias y comentarios" data-load="{{ url('suggestions') }}" data-target="#all-modal" id="suggestions-trigger">Sugerencias<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> </a></li>
+
                                     <li>Acerca de</li>
+                                    Authentication Links -->
                             <li><a  class="btn btn-raised btn-warning btn-sm" href="{{url('salir')}}">Salir</a> </li>
                                 </ul>
                             </li> 
@@ -137,8 +145,9 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{url('foto') }}">Perfil</a></li>
-                                    <li><a href="{{url('ayuda')}}"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Ayuda</a></li>
+                                    <li><a href="{{url('ayuda')}}"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Ayuda</a></li><li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="{{ url('login') }}" data-target="#all-modal" ><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Sugerencias</a></li>
                                     <li> Acerca de</li>
+
                             <li><a  class="btn btn-raised btn-warning btn-sm" href="{{url('salir')}}">Salir</a> </li>
                                 </ul>
                             </li> 
@@ -166,6 +175,7 @@
 
     </div>
 <div id="all-modal" class="modal  modal-lg fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="suggestions-modal" class="modal  modal-lg fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
 </div>
     <!-- Scripts -->
@@ -231,6 +241,20 @@ $(function(){ $('.orderedtable').dataTable(
             success:function(data)
           {
           $('#all-modal').html(data);
+          }
+      });
+        });
+
+      $('#suggestions-trigger').on('click', function (event) {
+          var button = $(event.relatedTarget); // Button that triggered the modal
+         
+          $.ajax({
+            url: '{{url('login')}}',
+            method:'GET',
+            data:{},
+            success:function(data)
+          {
+          $('#suggestions-modal').html(data);
           }
       });
         });

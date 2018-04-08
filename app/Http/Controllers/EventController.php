@@ -105,19 +105,20 @@ class EventController extends Controller
                 $temp['id'] = $value->id;
                 $data[] = $temp;
             }
+            if (!Auth::guest()) { 
+                echo Auth::guest();
+               Notification::where( [
+                    ['user_id','=',Auth::user()->id],
+                    ['visto','=',0],
+                    ['event_id','<>',null]
+                    ] )->update(['visto' => 1]);
 
-
-       Notification::where( [
-            ['user_id','=',Auth::user()->id],
-            ['visto','=',0],
-            ['event_id','<>',null]
-            ] )->update(['visto' => 1]);
-
-       
+           };
             return view('events.index')
             ->with('data',$data)
             ->with('fi',$fi)
             ->with('ff',$ff);
+        
     }
 
     /**
