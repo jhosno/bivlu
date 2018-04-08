@@ -15,6 +15,7 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/chart.min.js') }}"></script>
     <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body ng-app="bivlu">   
  
@@ -38,9 +39,9 @@
                         @if (Auth::guest())
                         <li><a href="{{url('actividades')}}">Actividades</a></li>
                         </li><li><a href="{{url('acerca-de')}}">Nosotros</a></li>
-                        <!-- Suggestions
-                        <li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="{{ url('suggestions') }}" data-target="#suggestions-modal" id="suggestions-trigger">Sugerencias</a></li>
-                    -->
+                        <!-- Suggestions -->
+                        <li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="{{ url('sugerencias') }}" data-target="#suggestions-modal" id="suggestions-trigger">Sugerencias</a></li>
+               
                         <li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="{{ url('login') }}" data-target="#all-modal" ><button id="login-trigger" class="btn btn-raised btn-warning btn-sm">¡Entrar!</button></a></li>
                         <li><a data-toggle="modal"  data-load="{{ url('signup') }}" data-target="#all-modal" ><button id="signup-trigger" class="btn btn-raised btn-warning btn-sm">Registrarse</button></a></li>
                         @elseif(Auth::user()->user_level=='admin')
@@ -96,11 +97,11 @@
                                     </a></li>
                                     <li><a href="{{url('ayuda')}}">Ayuda <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> </a></li>
                                     <li>Acerca de</li>  
-                                    <!-- suggestion                                 
-                                    <li><a data-toggle="modal" data-titulo="Sugerencias y comentarios" data-load="{{ url('suggestions') }}" data-target="#all-modal" id="suggestions-trigger">Sugerencias<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> </a></li>
+                                    <!-- suggestion       -->                           
+                                    <li><a data-toggle="modal" data-titulo="Sugerencias y comentarios" data-load="{{ url('sugerencias') }}" data-target="#all-modal" id="suggestions-trigger">Sugerencias<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> </a></li>
 
                                     <li>Acerca de</li>
-                                    Authentication Links -->
+                                    
                             <li><a  class="btn btn-raised btn-warning btn-sm" href="{{url('salir')}}">Salir</a> </li>
                                 </ul>
                             </li> 
@@ -249,8 +250,8 @@ $(function(){ $('.orderedtable').dataTable(
           var button = $(event.relatedTarget); // Button that triggered the modal
          
           $.ajax({
-            url: '{{url('login')}}',
-            method:'GET',
+            url: '{{url('sugerencias')}}',
+            method:'POST',
             data:{},
             success:function(data)
           {
