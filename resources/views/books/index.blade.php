@@ -104,7 +104,9 @@ $.alert({
           }
       });
         });
-
+$('#canc').click(function(){
+    $('all-modal').modal('hide');
+})
 function paraEdit(id)
 {
 

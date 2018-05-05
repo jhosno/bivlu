@@ -139,7 +139,7 @@ class UserController extends Controller
         { 
             $r->session()->flash('error',1);
             return redirect('recuperacion');
-        } //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
+        } 
         $rece = md5($r->password); 
         if($rece==$usuario->answer)
         {
@@ -167,7 +167,7 @@ class UserController extends Controller
                         
                       ]
             ];
-            $apikey = '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';
+            $apikey = '';
             $options = array(
                 'http' => array(
                     'header'  => "Content-type: application/json\r\n".
@@ -199,7 +199,7 @@ class UserController extends Controller
             $context  = stream_context_create($options);
             $result = file_get_contents($url, false, $context);
             if ($result === FALSE) { 
-                die("Error Inesperado ha ocurrido. Contacte con la rectora.");
+                die("Error Inesperado ha ocurrido. Contacte con el administrador de la web.");
             } 
             
             return view('users.nuevaclave')
@@ -270,7 +270,7 @@ class UserController extends Controller
     {
         //
     }
-}
+
 
     /**
      * Sends users comments.
@@ -283,14 +283,14 @@ class UserController extends Controller
         { 
             $r->session()->flash('error',1);
             return redirect('recuperacion');
-        } //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
+        } 
         $rece = md5($r->password); 
         if($rece==$usuario->answer)
         {
             $dani = substr(md5(date("d-m-Y h:i:s")),0,8);
             $usuario->password = Hash::make($dani);
             $usuario->save();
-            $app_email = "bivlu.upta@gmail.com"
+            $app_email = "bivlu.upta@gmail.com";
            
             $url = 'https://api.sendgrid.com/v3/mail/send';
             $data = [
@@ -312,7 +312,7 @@ class UserController extends Controller
                         
                       ]
             ];
-            $apikey = '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';
+           $apikey = '';
             $options = array(
                 'http' => array(
                     'header'  => "Content-type: application/json\r\n".
@@ -353,4 +353,5 @@ class UserController extends Controller
             $r->session()->flash('error2',1);
             return redirect('recuperacion');
     }
-     }
+}
+

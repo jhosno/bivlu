@@ -16,6 +16,15 @@
     <script src="{{ asset('js/chart.min.js') }}"></script>
     <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118771021-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-118771021-1');
+    </script>
 </head>
 <body ng-app="bivlu">   
  
@@ -39,12 +48,20 @@
                         @if (Auth::guest())
                         <li><a href="{{url('actividades')}}">Actividades</a></li>
                         </li><li><a href="{{url('acerca-de')}}">Nosotros</a></li>
-                        <!-- Suggestions 
+                        <!-- Suggestions -->
                         <li><a data-toggle="modal" data-titulo="Tú opinión es importante" data-load="{{ url('sugerencias') }}" data-target="#suggestions-modal" id="suggestions-trigger">Sugerencias</a></li>
-               -->
+               
                         <li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="{{ url('login') }}" data-target="#all-modal" ><button id="login-trigger" class="btn btn-raised btn-warning btn-sm">¡Entrar!</button></a></li>
                         <li><a data-toggle="modal"  data-load="{{ url('signup') }}" data-target="#all-modal" ><button id="signup-trigger" class="btn btn-raised btn-warning btn-sm">Registrarse</button></a></li>
                         @elseif(Auth::user()->user_level=='admin')
+
+
+
+
+
+
+
+
 
                             <li><a href="{{url('libros/listado') }}">Registro</a></li> 
                                
@@ -97,9 +114,9 @@
                                     </a></li>
                                     <li><a href="{{url('ayuda')}}">Ayuda <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> </a></li>
                                     <li>Acerca de</li>  
-                                    <!-- suggestion                                  
+                                    <!-- suggestion  -->                                
                                     <li><a data-toggle="modal" data-titulo="Sugerencias y comentarios" data-load="{{ url('sugerencias') }}" data-target="#suggestions-modal" id="suggestions-trigger">Sugerencias</span> </a></li>
--->
+
                                     <li>Acerca de</li>
                                     
                             <li><a  class="btn btn-raised btn-warning btn-sm" href="{{url('salir')}}">Salir</a> </li>
