@@ -75,6 +75,7 @@ Route::get('signup', function(){
 });   
 
 Route::get('api/humanos', 'HumanController@index');
+Route::get('api/usuarios', 'UserController@index');
 
 Route::get('respaldo', 'InternoController@respaldo'); 
 Route::get('foto', 'InternoController@foto'); 

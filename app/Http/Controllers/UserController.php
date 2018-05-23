@@ -42,12 +42,19 @@ class UserController extends Controller
     'Libros'=>['Mis Solicitudes'=>'','Mis Préstamos'=>'','Histórico de Préstamos'=>''], 
     'Actividades'=> '', 
         ];
+        var_dump($request)
+        die();
+        echo $request;
+        print_r($request);
         $u = new User();
         $u->name = $request->nombres;
         $u->email = $request->email;
         $u->user_level = 'estudiante';
         $u->human_id = $request->human_id;
         $u->password = Hash::make($request->contrasena);
+        $u->domanda_di_securida = $request->domanda_di_securida;
+        $u->answer = Hash::make($request->answer);
+
         $u->save();
         foreach($porDefectos as $modulo => $subPrivilegios)
         {
@@ -134,79 +141,79 @@ class UserController extends Controller
 
     public function ask4Pass(Request $r )
     {
-        $usuario = User::find($r->input('id'));
-        if(count($usuario) == 0)
-        { 
-            $r->session()->flash('error',1);
-            return redirect('recuperacion');
+      $usuario = User::find($r->input('id'));
+      if(count($usuario) == 0)
+      { 
+        $r->session()->flash('error',1);
+        return redirect('recuperacion');
+      } 
+      $rece = md5($r->password); 
+      if($rece==$usuario->answer)
+      {
+        $dani = substr(md5(date("d-m-Y h:i:s")),0,8);
+        $usuario->password = Hash::make($dani);
+        $usuario->save();
+        
+        $url = 'https://api.sendgrid.com/v3/mail/send';
+        $data = [
+          "personalizations" => [
+
+            "to" => [
+              ["email" => $usuario->email]
+            ],
+            "subject" => "Recuperacion de Clave"
+
+          ],
+          "from" => [
+            ["email" => "bivlu@upta.edu.ve"]
+          ],
+          "content" => [
+
+            "type" => "text/plain",
+            "value" => "Su nueva clave es ".$dani
+
+          ]
+        ];
+        $apikey = ;
+        $options = array(
+          'http' => array(
+            'header'  => "Content-type: application/json\r\n".
+            "Authorization: Bearer $apikey\r\n",
+            'method'  => 'POST',
+            'content' => "{
+              \"personalizations\": [
+                {
+                  \"to\": [
+                    {
+                      \"email\": \"{$usuario->email}\"
+                    }
+                  ],
+                  \"subject\": \"Recuperacion de clave\"
+                }
+              ],
+              \"from\": {
+                \"email\": \"bivlu@upta.edu.ve\"
+              },
+              \"content\": [
+                {
+                  \"type\": \"text/plain\",
+                  \"value\": \"Su nueva clave es: $dani\"
+                }
+              ]
+            }"
+          )
+        );
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        if ($result === FALSE) { 
+          die("Error Inesperado ha ocurrido. Contacte con el administrador de la web.");
         } 
-        $rece = md5($r->password); 
-        if($rece==$usuario->answer)
-        {
-            $dani = substr(md5(date("d-m-Y h:i:s")),0,8);
-            $usuario->password = Hash::make($dani);
-            $usuario->save();
-           
-            $url = 'https://api.sendgrid.com/v3/mail/send';
-            $data = [
-                    "personalizations" => [
-                        
-                          "to" => [
-                              ["email" => $usuario->email]
-                          ],
-                          "subject" => "Recuperacion de Clave"
-                        
-                      ],
-                      "from" => [
-                        ["email" => "bivlu@upta.edu.ve"]
-                      ],
-                      "content" => [
-                        
-                          "type" => "text/plain",
-                          "value" => "Su nueva clave es ".$dani
-                        
-                      ]
-            ];
-            $apikey = '';
-            $options = array(
-                'http' => array(
-                    'header'  => "Content-type: application/json\r\n".
-                                    "Authorization: Bearer $apikey\r\n",
-                    'method'  => 'POST',
-                    'content' => "{
-  \"personalizations\": [
-    {
-      \"to\": [
-        {
-          \"email\": \"{$usuario->email}\"
-        }
-      ],
-      \"subject\": \"Recuperacion de clave\"
-    }
-  ],
-  \"from\": {
-    \"email\": \"bivlu@upta.edu.ve\"
-  },
-  \"content\": [
-    {
-      \"type\": \"text/plain\",
-      \"value\": \"Su nueva clave es: $dani\"
-    }
-  ]
-}"
-                )
-            );
-            $context  = stream_context_create($options);
-            $result = file_get_contents($url, false, $context);
-            if ($result === FALSE) { 
-                die("Error Inesperado ha ocurrido. Contacte con el administrador de la web.");
-            } 
-            
-            return view('users.nuevaclave')
-            ->with('usuario',$usuario); 
-        } 
-            $r->session()->flash('error2',1);
-            return redirect('recuperacion');
+
+        return view('users.nuevaclave')
+        ->with('usuario',$usuario); 
+      } 
+      $r->session()->flash('error2',1);
+      return redirect('recuperacion');
     }
 
     /**
@@ -278,80 +285,83 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
      public function suggestions(Request $r){
-        $usuario = User::find($r->input('id'));
-        if(count($usuario) == 0)
-        { 
-            $r->session()->flash('error',1);
-            return redirect('recuperacion');
+      if (!Auth::guest()) {
+        $dani = substr(md5(date("d-m-Y h:i:s")),0,8);
+        $usuario->password = Hash::make($dani);
+        $usuario->save();
+        ///////
+
+        $app_email = "bivlu.upta@gmail.com";
+
+        $url = 'https://api.sendgrid.com/v3/mail/send';
+        $data = [
+          "personalizations" => [
+
+            "to" => [
+              ["email" => $app_email]
+            ],
+            "subject" => $r->topic
+
+          ],
+          "from" => [
+            ["email" => $r->email]
+          ],
+          "content" => [
+
+            "type" => "text/plain",
+            "value" => $r->message
+
+          ]
+        ];
+        $apikey = ;
+        $options = array(
+          'http' => array(
+            'header'  => "Content-type: application/json\r\n".
+            "Authorization: Bearer $apikey\r\n",
+            'method'  => 'POST',
+            'content' => "{
+              \"personalizations\": [
+                {
+                  \"to\": [
+                    {
+                      \"email\": \"$app_email\"
+                    }
+                  ],
+                  \"subject\": \"{$r->topic}\"
+                }
+              ],
+              \"from\": {
+                \"email\": \"{$usuario->email}\"
+              },
+              \"content\": [
+                {
+                  \"type\": \"text/plain\",
+                  \"value\": \"{$r->message}\"
+                }
+              ]
+            }"
+          )
+        );
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        if ($result === FALSE) { 
+          die("Error Inesperado ha ocurrido. Contacte con el administrador.");
         } 
-        $rece = md5($r->password); 
-        if($rece==$usuario->answer)
-        {
-            $dani = substr(md5(date("d-m-Y h:i:s")),0,8);
-            $usuario->password = Hash::make($dani);
-            $usuario->save();
-            $app_email = "bivlu.upta@gmail.com";
-           
-            $url = 'https://api.sendgrid.com/v3/mail/send';
-            $data = [
-                    "personalizations" => [
-                        
-                          "to" => [
-                              ["email" => $app_email]
-                          ],
-                          "subject" => "Recuperacion de Clave"
-                        
-                      ],
-                      "from" => [
-                        ["email" => $r->email]
-                      ],
-                      "content" => [
-                        
-                          "type" => "text/plain",
-                          "value" => "Su nueva clave es ".$dani
-                        
-                      ]
-            ];
-           $apikey = '';
-            $options = array(
-                'http' => array(
-                    'header'  => "Content-type: application/json\r\n".
-                                    "Authorization: Bearer $apikey\r\n",
-                    'method'  => 'POST',
-                    'content' => "{
-  \"personalizations\": [
-    {
-      \"to\": [
-        {
-          \"email\": \"{$usuario->email}\"
-        }
-      ],
-      \"subject\": \"Recuperacion de clave\"
-    }
-  ],
-  \"from\": {
-    \"email\": \"bivlu@upta.edu.ve\"
-  },
-  \"content\": [
-    {
-      \"type\": \"text/plain\",
-      \"value\": \"Su nueva clave es: $dani\"
-    }
-  ]
-}"
-                )
-            );
-            $context  = stream_context_create($options);
-            $result = file_get_contents($url, false, $context);
-            if ($result === FALSE) { 
-                die("Error Inesperado ha ocurrido. Contacte con la rectora.");
-            } 
-            
-            return view('users.nuevaclave')
-            ->with('usuario',$usuario); 
-        } 
-            $r->session()->flash('error2',1);
-            return redirect('recuperacion');
+
+        return view('users.nuevaclave')
+        ->with('usuario',$usuario); 
+      } 
+      $r->session()->flash('error2',1);
+      return redirect('recuperacion');
     }
 }
+    public function index(Request $request)
+    { 
+        $human_id = $request->human_id;
+        $arreglo = [];
+        $rs = User::where('human_id',"$human_id")
+                ->get()
+                ->toArray(); 
+                return $rs;
 
+    }

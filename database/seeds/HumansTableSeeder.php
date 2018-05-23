@@ -15,9 +15,9 @@ class HumansTableSeeder extends Seeder
     {
         Human::create(
         	[
-        	'cedula'=>'12345678',
+        	'cedula'=>'21026870',
         	'nombres'=>'Jhosnoirlit Gabriela',
-        	'apellidos'=>'Hernandez Castillo',
+        	'apellidos'=>'Hernández Castillo',
             'numero_telefono'=>'04124373630',
         	]);
         Human::create(
@@ -29,8 +29,8 @@ class HumansTableSeeder extends Seeder
         	]);
         Human::create(
         	[
-        	'cedula'=>'3456789',
-        	'nombres'=>'Geovanny Jesus',
+        	'cedula'=>'4367905',
+        	'nombres'=>'José Antonio Hernández',
         	'apellidos'=>'Abbinante',
             'numero_telefono'=>'04124373630',
         	]);
@@ -43,17 +43,24 @@ class HumansTableSeeder extends Seeder
         	]);
         Human::create(
             [
-            'cedula'=>'8765432',
+            'cedula'=>' 8810760',
             'nombres'=>'Esperanza',
             'apellidos'=>'Castellano',
-            'numero_telefono'=>'04124373630',
+            'numero_telefono'=>'04144903142',
             ]);
         Human::create(
             [
-            'cedula'=>'121212',
-            'nombres'=>'Saori',
-            'apellidos'=>'Kido',
-            'numero_telefono'=>'04124373630',
+            'cedula'=>'10356503',
+            'nombres'=>'Noiralith Irene',
+            'apellidos'=>'Castillo Capote',
+            'numero_telefono'=>'04127572161',
+            ]);
+        Human::create(
+            [
+            'cedula'=>'17270003',
+            'nombres'=>'Digna Leonor',
+            'apellidos'=>'Salcedo',
+            'numero_telefono'=>'04262209579',
             ]);
         Student::create(
             [
@@ -68,6 +75,11 @@ class HumansTableSeeder extends Seeder
         Student::create(
             [
             'human_id'=>'6',
+            'speciality_id'=>'1', 
+            ]);
+        Student::create(
+            [
+            'human_id'=>'7',
             'speciality_id'=>'1', 
             ]);
     }

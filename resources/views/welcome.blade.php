@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content') 
-<img class="marp" src="img/buho_bivle_lentes.png" alt="MARP - bivlu">
+<div class="container container-fluid ">
+<img class="marp img-fluid" src="img/buho_bivle_lentes.png" alt="MARP - bivlu">
                 <form class="search form">
                     <input type="search" name="q" id="q" ng-model="index.q" onkeyup="loadBooks();"  placeholder="Ingrese su búsqueda aquí.">
                     <span  class="small link">Mostrar Búsqueda Avanzada</span>
@@ -28,7 +29,7 @@
                 
             <div class="wrapper row" id="contenedor">
             </div>
-
+</div>
 @endsection
 @section('scripts')
 <script type="text/javascript">

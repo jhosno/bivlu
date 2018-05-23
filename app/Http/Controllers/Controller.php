@@ -64,10 +64,12 @@ class Controller extends BaseController
     protected function saveOperation($module,$kind,$details)
     {
         $interno = new Interno();
-        $interno->user_id = Auth::user()->id;
+        if (!Auth::guest()) {
+            $interno->user_id = Auth::user()->id;
+            $interno->detalles = "El usuario ".Auth::user()->human->nombres." ".Auth::user()->human->apellidos." ha $details";
+        };        
         $interno->modulo = $module;
         $interno->tipo = $kind;
-        $interno->detalles = "El usuario ".Auth::user()->human->nombres." ".Auth::user()->human->apellidos." ha $details";
         $interno->save();
     }
 }

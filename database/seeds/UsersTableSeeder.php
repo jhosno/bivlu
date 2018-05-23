@@ -33,8 +33,8 @@ class UsersTableSeeder extends Seeder
             ]);
         User::create(
             [
-            'email'=>'geovanny@gmail.com',
-            'name'=>'Geovanny',
+            'email'=>'josanto@gmail.com',
+            'name'=>'José',
             'password'=> Hash::make('12345678'),
             'user_level'=>'estudiante',
             'human_id'=> 3
@@ -49,11 +49,12 @@ class UsersTableSeeder extends Seeder
             ]);
         User::create(
             [
-            'email'=>'ivan@gmail.com',
-            'name'=>'Ivan',
+            'email'=>'esperanzacastellano@hotmail.com',
+            'name'=>'Esperanza',
             'password'=> Hash::make('12345678'),
             'user_level'=>'jefe',
             'human_id'=> 5
             ]);
+
     }
 }

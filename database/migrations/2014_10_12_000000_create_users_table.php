@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
                   ->default('Nombre de la mascota');
             
             $table->string('answer');
+                    
             $table->integer('human_id');
             $table->string('photo');
             $table->rememberToken();
