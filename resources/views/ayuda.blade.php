@@ -257,10 +257,10 @@ p{
 <?php $__env->startSection('scripts'); ?>
 <script type="text/javascript">
       
-<?php if(Session::has('exito')): ?>
+<?php if(Session::has('Éxito')): ?>
 $.alert({
     title: 'Operación exitosa.',
-    content: '<?php echo e(Session::get('exito')); ?>' ,
+    content: '<?php echo e(Session::get('Éxito')); ?>' ,
     type: 'green'
 });
 <?php endif; ?>

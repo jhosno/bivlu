@@ -58,7 +58,7 @@
 
 @section('scripts')
 <script type="text/javascript">
-@if(Session::has('exito'))
+@if(Session::has('Éxito'))
 $.alert({
     title: 'Condiciones de uso.',
     content: 'Se ha realizado con éxito la solicitud del evento. Le informamos que al hacerse efectiva la solicitud ud acepta las reglas y normas de uso del área y queda bajo su responsabilidad el uso adecuado del espacio y su mobiliario, el orden y limpieza. Gracias por elegirnos',

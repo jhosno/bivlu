@@ -218,7 +218,7 @@ class EventController extends Controller
         $e->save();
         if(! ($request->input('confirmado',false)) )
             $this->generateNotifications('Evento', $e->id);
-        $request->session()->flash('exito',true); 
+        $request->session()->flash('Éxito',true); 
         return redirect('eventos');
     }
 
@@ -278,7 +278,7 @@ class EventController extends Controller
         $evento = Event::find($event);
         Event::destroy($event);
              parent::saveOperation("Inicio","Eventos","cancelado el evento ".$evento->nombre);
-        $request->session()->flash('exito','Evento cancelado.');
+        $request->session()->flash('Éxito','Evento cancelado.');
         return redirect('reservaciones');
     }
 
@@ -316,7 +316,7 @@ class EventController extends Controller
         $e->save();
         if(is_numeric($e->user_id))
             $this->generateNotifications('Evento', $request->event_id, $e->user_id);
-        $request->session()->flash('exito','Evento confirmado.');
+        $request->session()->flash('Éxito','Evento confirmado.');
                 parent::saveOperation("Inicio","Eventos","confirmado el evento ".$e->nombre);
         return redirect('reservaciones');
     }

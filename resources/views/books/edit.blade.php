@@ -91,7 +91,7 @@
 
     </div>
 
-
+</div>
 </div>
 @if($libro->url!=null)
 

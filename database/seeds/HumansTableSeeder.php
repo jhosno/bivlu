@@ -62,6 +62,20 @@ class HumansTableSeeder extends Seeder
             'apellidos'=>'Salcedo',
             'numero_telefono'=>'04262209579',
             ]);
+        Human::create(
+            [
+            'cedula'=>'6670846',
+            'nombres'=>'Ana',
+            'apellidos'=>'Toro',
+            
+            ]);
+        Human::create(
+            [
+            'cedula'=>'8817817',
+            'nombres'=>'Mercedes',
+            'apellidos'=>'Cardell',
+            
+            ]);
         Student::create(
             [
             'human_id'=>'2',

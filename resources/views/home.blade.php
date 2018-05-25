@@ -33,10 +33,10 @@
 @section('scripts')
 <script type="text/javascript">
       
-@if(Session::has('exito'))
+@if(Session::has('Éxito'))
 $.alert({
     title: 'Operación exitosa.',
-    content: '{{Session::get('exito')}}' ,
+    content: '{{Session::get('Éxito')}}' ,
     type: 'green'
 });
 @endif

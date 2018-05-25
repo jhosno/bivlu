@@ -17,7 +17,10 @@
     </caption>
     <thead>
         <tr>
-            <th>Correlativo</th>
+            <th>Cota</th>
+            <th>N° Registro</th>
+            <th>N° Ejemplar</th>
+            <th>Cod. Bienes nacionales</th>
             <th>Estado</th> 
             <th>Acciones</th>
         </tr>
@@ -27,6 +30,9 @@
         <tr>
             <td>{{ $value['correlativo'] }}</td> 
             <td>{{ $value['estado_item'] }}</td> 
+            <td></td>
+            <td></td>
+            <td></td>
             <td>
             <a title="Editar" onclick="paraEdit({{$value['id']}})" ><i class="material-icons ">create</i></a>
              
@@ -43,17 +49,17 @@
 
 @section('scripts')
 <script type="text/javascript">
-@if(Session::has('exito'))
+@if(Session::has('Éxito'))
 $.alert({
     title: 'Operación exitosa.',
-    content: '{{ Session::get('exito') }}',
+    content: '{{ Session::get('Éxito') }}',
     type: 'green'
 });
 @endif
 @if(Session::has('error'))
 $.alert({
     title: 'Error.',
-    content: 'Correlativo ya existe.',
+    content: 'Cota ya existe.',
     type: 'red'
 });
 @endif

@@ -59,7 +59,7 @@ class ItemController extends Controller
         $corr = $ult+1;
         $miBook->correlativo = $corr;
         $miBook->save();
-            $request->session()->flash('exito','Ejemplar agregado');
+            $request->session()->flash('Éxito','Ejemplar agregado');
        parent::saveOperation("Inicio","Registro","registrado  el ejemplar ".$request->correlativo." del libro".$libro->titulo);
         return redirect('ejemplares/'.$request->book_id);
     }
@@ -95,7 +95,15 @@ class ItemController extends Controller
      */
     public function update(Request $request, Item $item)
     {
-        //
+        $it = Item::find($item);
+        $id = Item::find($item)->id;
+        $mod->n_registro=$request->n_registro;
+        $mod->n_ejemplar=$request->n_ejemplar;
+        $mod->cbn=$request->cbn;
+        $mod->save();
+        $request->session()->flash('Éxito','Ejemplar Actualizado.');
+       parent::saveOperation("Inicio","Registro","Actualizado  el ejemplar ".$it->correlativo." del libro".$it->book->titulo);
+        return redirect('ejemplares/'.$id);
     }
 
     /**
@@ -108,9 +116,11 @@ class ItemController extends Controller
     {
         $it = Item::find($item);
         $id = Item::find($item)->id;
-        Item::destroy($item);
-        $request->session()->flash('exito','Ejemplar eliminado.');
-       parent::saveOperation("Inicio","Registro","eliminado  el ejemplar ".$it->correlativo." del libro".$it->book->titulo);
+        var_dump($id);
+        $item = "Desincorporado";
+        $Item->save();
+        $request->session()->flash('Éxito','Ejemplar Desincorporado.');
+       parent::saveOperation("Inicio","Registro","Desincorporado  el ejemplar ".$it->correlativo." del libro".$it->book->titulo);
         return redirect('ejemplares/'.$id);
     }
 }

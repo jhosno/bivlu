@@ -18,6 +18,9 @@ class CreateItemsTable extends Migration
             $table->integer('book_id');
             $table->string('estado_item')->default('DISPONIBLE');
             $table->string('correlativo'); 
+            $table->string('n_registro'); 
+            $table->string('n_ejemplar'); 
+            $table->string('cbn'); 
             $table->timestamps();
         });
     }

@@ -129,6 +129,8 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+         die(var_dump($request->n_registro, $request->n_ejemplar,$request->cbn, $request->correlativo ));
+         
          extract($request->only('autores'));
 
         $author = explode(',',$autores);
@@ -241,7 +243,7 @@ class BookController extends Controller
         $miBook->save();
 
 
-        $request->session()->flash('exito','Libro guardado');
+        $request->session()->flash('Éxito','Libro guardado');
         return redirect('libros/listado');
     }
 
@@ -354,7 +356,7 @@ class BookController extends Controller
         }
         $miBook->save();
         
-        $request->session()->flash('exito','Libro editado.');
+        $request->session()->flash('Éxito','Libro editado.');
         return redirect('libros/listado');
 
     }
@@ -374,7 +376,7 @@ class BookController extends Controller
             }
         }
         Book::destroy($book);
-        $request->session()->flash('exito','exito en el borrado');
+        $request->session()->flash('Éxito','Éxito en el borrado');
         return redirect('libros/listado');
     }
 }

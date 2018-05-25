@@ -918,7 +918,7 @@ public function actualizarFoto(Request $request)
         }
         else
             $user->save();
-        $request->session()->flash("exito",1);
+        $request->session()->flash("Éxito",1);
         return redirect("foto");
     }
     else 
@@ -958,7 +958,7 @@ public function restaurarBD(Request $request)
                     }
                 }
             } 
-            return "Exito";
+            return "Éxito";
         }
         else 
         { 

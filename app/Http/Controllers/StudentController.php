@@ -73,7 +73,7 @@ class StudentController extends Controller
             }
         }
        parent::saveOperation("Inicio","Prestamos","registrado al usuario ".$request->nombres." (".$request->email.")");
-        $request->session()->flash('exito','Usuario registrado.');
+        $request->session()->flash('Éxito','Usuario registrado.');
         return redirect('/');
     }
 

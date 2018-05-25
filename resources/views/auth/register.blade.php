@@ -40,7 +40,7 @@
             <label for="evento" class="col-md-3 control-label">Contraseña:<b style="color:red">*</b></label>
 
             <div class="col-md-3">
-                <input id="p" type="password" title="Su clave de acceso." placeholder="*******"  class="form-control " name="contrasena"  required >
+                <input id="p" type="password" title="Su clave de acceso." placeholder="*******"  class="form-control " name="contrasena"  onChange="validar()"required >
 
             </div>
             <label for="password" class="col-md-3 control-label">Confirme Contraseña:<b style="color:red">*</b></label>
@@ -50,6 +50,7 @@
 
             </div>
         </div>
+        
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
             <label for="password" class="col-md-3 control-label">Pregunta de seguridad:<b style="color:red">*</b></label>
 
@@ -71,6 +72,7 @@
             <input class="form-control " title="Respuesta de seguridad" placeholder="Respuesta de seguridad" type="password" name="answer" required> 
 
         </div>
+    
     </div>
 <div class="col-md-offset-8"><a href="{{url('recuperacion')}}">¿Olvidó su contraseña? <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></a></div>
     <div class="form-group">
@@ -93,19 +95,15 @@
         if(val.trim!='')
             $.get('{{url('api/humanos')}}?nouser=1&cedula='+val,function(data)
             {  
-                console.log(data);
+                
                 var human_id = data[0]['id'];
-                    console.log(human_id);
+                    
                 if(data[0]!=undefined)
                 {
                     $('[name=nombres]').val(data[0]['nombres']);
                     $('[name=apellidos]').val(data[0]['apellidos']);
                     $('[name=human_id]').val(data[0]['id']);
                     $('[name=tranca]').val("PASA");
-                    
-                    $.get('{{url('api/usuarios')}}?human_id='+human_id,function(data){
-                        console.log(data);
-                    })
                 }
                 else
                 {
@@ -122,18 +120,18 @@
 
     function validar(){
         var errores ='';
-
+        
         if(! $('[name=contrasena]').val().match(/^(.)*([A-Z])(.)*$/))
         {
-            errores += 'La clave debe tener al menos una mayuscula';
+            errores += ' La clave debe tener al menos una mayuscula.';
         }
         if(! $('[name=contrasena]').val().match(/^.*([0-9]).*$/))
         {
-            errores += 'La clave debe tener al menos un digito';
+            errores += ' La clave debe tener al menos un digito.';
         }
         if(! $('[name=contrasena]').val().match(/^.*([\$\!/\.\#\@\*]).*$/))
         {
-            errores += 'La clave debe tener al menos alguno de estos simbolos: $ - ! - . - # - @ - *';
+            errores += ' La clave debe tener al menos alguno de estos simbolos: $ - ! - . - # - @ - *';
         }
         if(errores!='')
         {

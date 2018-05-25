@@ -39,7 +39,7 @@ class LoanController extends Controller
        parent::saveOperation("Inicio","Prestamos","confirmado el préstamo # $id");
 
             $this->generateNotifications('Solicitud', $id, $libro->user_id);
-        $request->session()->flash('exito','Préstamo confirmado.');
+        $request->session()->flash('Éxito','Préstamo confirmado.');
          
         return redirect('prestamos');
     }
@@ -56,7 +56,7 @@ class LoanController extends Controller
         $i->estado_item='DISPONIBLE';
         $i->save();
 
-        $request->session()->flash('exito','Préstamo terminado.');
+        $request->session()->flash('Éxito','Préstamo terminado.');
         parent::saveOperation("Inicio","Prestamos","finalizado el préstamo # $id");
          
         return redirect('prestamos');
@@ -68,7 +68,7 @@ class LoanController extends Controller
         $libro->estado='CANCELADA';
         $libro->save();
 
-        $request->session()->flash('exito','Préstamo cancelado.');
+        $request->session()->flash('Éxito','Préstamo cancelado.');
        parent::saveOperation("Inicio","Prestamos","cancelado el préstamo # $id");
          
         return redirect('virtuales');
@@ -397,7 +397,7 @@ class LoanController extends Controller
                 $expiracion = date("d/m/Y", strtotime($b->fecha_expiracion));
  
 
-        $request->session()->flash('exito',"Préstamo concedido. Antes de la fecha $expiracion el usuario debe devolver el libro en horario de oficina.");
+        $request->session()->flash('Éxito',"Préstamo concedido. Antes de la fecha $expiracion el usuario debe devolver el libro en horario de oficina.");
                 parent::saveOperation("Inicio","Prestamos","almacenado el préstamo # ".$b->id);
         return redirect('prestamos');
     }
@@ -417,7 +417,7 @@ class LoanController extends Controller
 
         Loan::destroy($id);
 
-        $request->session()->flash('exito','Préstamo descartado.');
+        $request->session()->flash('Éxito','Préstamo descartado.');
                 parent::saveOperation("Inicio","Prestamos","descartado el préstamo # $id");
          
         return redirect('virtuales');    }

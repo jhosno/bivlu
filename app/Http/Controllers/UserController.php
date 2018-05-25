@@ -80,7 +80,7 @@ class UserController extends Controller
             }
         }
        parent::saveOperation("Inicio","Prestamos","registrado al usuario ".$request->nombres." (".$request->email.")");
-        $request->session()->flash('exito','Usuario registrado.');
+        $request->session()->flash('Éxito','Usuario registrado.');
         return redirect('/');
     }
 
@@ -174,7 +174,7 @@ class UserController extends Controller
 
           ]
         ];
-        $apikey = ;
+        $apikey = '';
         $options = array(
           'http' => array(
             'header'  => "Content-type: application/json\r\n".
@@ -313,7 +313,7 @@ class UserController extends Controller
 
           ]
         ];
-        $apikey = ;
+        $apikey = '';
         $options = array(
           'http' => array(
             'header'  => "Content-type: application/json\r\n".
