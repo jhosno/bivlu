@@ -129,7 +129,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-         die(var_dump($request->n_registro, $request->n_ejemplar,$request->cbn, $request->correlativo ));
+         
          
          extract($request->only('autores'));
 
@@ -187,6 +187,10 @@ class BookController extends Controller
         $it = new Item();
         $it->book_id = $miBook->id;
         $it->correlativo = $request->correlativo;
+        $it->n_registro = $request->n_registro;
+        $it->n_ejemplar = "1.sala";
+        $it->cbn = $request->cbn;
+
         $it->save();
         
         $arr_tags = strstr(",", $request->etiquetas) != -1 ? explode(",", $request->etiquetas) : [$request->etiquetas];
@@ -271,7 +275,10 @@ class BookController extends Controller
     {
         
         $libro = Book::find($id);
-        return view('books.edit')->with('libro',$libro);
+        $item = Item::query('correlativo')->find($id);
+        //$libro = $libro.'"correlativo"'.':'."$item->correlativo";
+        die(var_dump($libro));
+        return view('books.edit')->with('libro',$libro, 'item',$item);
     }
 
     /**
@@ -296,7 +303,10 @@ class BookController extends Controller
         $miBook->publisher_id = 1;
         $miBook->speciality_id = 1;
         $miBook->save();
-        
+        $item = Item::find($id)->book_id;
+        $item->correlativo = $request->correlativo;
+        die(var_dump($item));
+        $item->save();
         $arr_tags = explode(",", $request->etiquetas);
         $arr_autores = explode(",", $request->autores);
 

@@ -42,8 +42,8 @@ class UserController extends Controller
     'Libros'=>['Mis Solicitudes'=>'','Mis Préstamos'=>'','Histórico de Préstamos'=>''], 
     'Actividades'=> '', 
         ];
-        var_dump($request)
-        die();
+        
+        
         echo $request;
         print_r($request);
         $u = new User();
@@ -54,7 +54,7 @@ class UserController extends Controller
         $u->password = Hash::make($request->contrasena);
         $u->domanda_di_securida = $request->domanda_di_securida;
         $u->answer = Hash::make($request->answer);
-
+        
         $u->save();
         foreach($porDefectos as $modulo => $subPrivilegios)
         {

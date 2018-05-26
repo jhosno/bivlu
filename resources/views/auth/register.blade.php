@@ -52,7 +52,7 @@
         </div>
         
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-            <label for="password" class="col-md-3 control-label">Pregunta de seguridad:<b style="color:red">*</b></label>
+            <label for="domanda_di_securida" class="col-md-3 control-label">Pregunta de seguridad:<b style="color:red">*</b></label>
 
             <div class="col-md-3">
                 <select class="form-control " title="Seleccione una pregunta de seguridad en caso de extravio de contraseña."  name="domanda_di_securida"  >

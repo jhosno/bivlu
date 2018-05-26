@@ -16,7 +16,8 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('book_id');
-            $table->string('estado_item')->default('DISPONIBLE');
+            $table->string('estado_item')
+                    ->default('DISPONIBLE');
             $table->string('correlativo'); 
             $table->string('n_registro'); 
             $table->string('n_ejemplar'); 

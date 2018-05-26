@@ -55,10 +55,14 @@ class ItemController extends Controller
         $miBook = new Item();
         $miBook->book_id = $request->book_id;
         $libro =  Book::find($request->book_id);
-        $ult = $libro->items()->orderBy('correlativo','desc')->first()->correlativo;
-        $corr = $ult+1;
-        $miBook->correlativo = $corr;
-        $miBook->save();
+        //$ult = $libro->items()->orderBy('correlativo','desc')->first()->correlativo;
+        //$corr = $ult+1;
+        //$n_ejemplar = $request->num_sala.$request->sala
+       // $miBook->n_ejemplar= $n_ejemplar;
+        //$miBook->n_registro = $request->n_registro;
+        //$miBook->cbn = $request->cbn;
+        //die(var_dump($miBook->n_ejemplar, $miBook->n_registro, $miBook->cbn));
+        //$miBook->save();
             $request->session()->flash('Éxito','Ejemplar agregado');
        parent::saveOperation("Inicio","Registro","registrado  el ejemplar ".$request->correlativo." del libro".$libro->titulo);
         return redirect('ejemplares/'.$request->book_id);

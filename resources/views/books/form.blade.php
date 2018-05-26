@@ -86,42 +86,18 @@
             </div>
         </div>
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-            <label for="libro" class="col-md-3 control-label">Cota:<b style="color:red">*</b></label>
-
-            <div class="col-md-3">
-             <input class="form-control"  title="Ingrese la Cota del libro." placeholder="Ej. REF HD7273R 73 T2" name="correlativo" type="text"  value="{{ isset($libro) ? $libro['portada'] : '' }}" id = "correlative"required value="onchange.uniqid()"> 
-
-         </div>
-
-
-         <label for="libro" class=" control-label col-md-3">N° Registro: <b style="color:red">*</b></label>
-         <div class="col-md-3">
-           <input class="form-control"  title="Ingrese número de registro del primer ejemplar." placeholder="Ej. 2132" name="n_registro" type="number"  value="{{ isset($libro) ? $libro['portada'] : '' }}" id = "n_registro"required value="onchange.uniqid()"> 
-
+           <label for="libro" class=" control-label col-md-3">Resumen: </label>
+           <div class="col-md-3">
+            <textarea class="form-control col-md-3" cols="2" rows="2"  name="resumen"  title="Ingrese el resumen del libro." placeholder="Ej. loren ipsum" > </textarea>
 
         </div>
-
-
-    </div>
-    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-        <label for="libro" class="col-md-3 control-label">Cod. BN:<b style="color:red">*</b></label>
+        <label for="libro" class="col-md-3 control-label">Cota:<b style="color:red">*</b></label>
 
         <div class="col-md-3">
-         <input class="form-control"  title="Ingrese el código de Bienes necionales del primer ejemplar" placeholder="Ej. 2132" name="cnb" type="number"  value="{{ isset($libro) ? $libro['portada'] : '' }}" id = "cnb"required value="onchange.uniqid()"> 
-
-     </div>
-
-
-     <label for="libro" class=" control-label col-md-3">Resumen: </label>
-     <div class="col-md-3">
-        <textarea class="form-control col-md-3" cols="2" rows="2"  name="resumen"  title="Ingrese el resumen del libro." placeholder="Ej. loren ipsum" > </textarea>
-
-    </div>
-
-
-</div>
-
-<div class="form-group ">
+           <input class="form-control"  title="Ingrese la Cota del libro." placeholder="Ej. REF HD7273R 73 T2" name="correlativo" type="text"  value="{{ isset($libro) ? $libro['portada'] : '' }}" id = "correlative"required value="onchange.uniqid()"> 
+       </div>
+   </div>
+   <div class="form-group ">
 
     <label for="archivo" class="control-label col-md-3">Documento:</label>
 
@@ -130,6 +106,36 @@
 
 
 </div>
+<div class=" text-center">
+    <hr>
+    <h4 style="color: #3F51B5">Datos del primer ejemplar</h4>
+    <hr>
+</div>
+
+
+
+
+<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+    <label for="libro" class="col-md-3 control-label">N° Registro:<b style="color:red">*</b></label>
+
+    <div class="col-md-3">
+       <input class="form-control"  title="Ingrese el código de Bienes necionales del primer ejemplar" placeholder="Ej. 2132" name="n_registro" type="number"  value="{{ isset($libro) ? $libro['portada'] : '' }}" id = "n_registro"required value="onchange.uniqid()"> 
+
+   </div>
+   <label for="libro" class="col-md-3 control-label">Cod. BN:<b style="color:red">*</b></label>
+
+   <div class="col-md-3">
+       <input class="form-control"  title="Ingrese el código de Bienes necionales del primer ejemplar" placeholder="Ej. 2132" name="cbn" type="number"  value="{{ isset($libro) ? $libro['portada'] : '' }}" id = "cbn"required value="onchange.uniqid()"> 
+
+   </div>
+
+
+
+
+
+</div>
+
+
 
 <div class="form-group">
     <div class="col-md-8 col-md-offset-4">

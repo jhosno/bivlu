@@ -1,6 +1,6 @@
 <div class="modal-header">Agregar Ejemplar</div>
                 <div class="modal-body">
-                    <form class="form-horizontal" method="POST" action="{{ url('ejemplares') }}">
+                    <form class="form-horizontal" method="POST" action="{{ url('ejemplares/crear/') }}">
                     <input type="hidden" name="book_id" value="{{$libro->id}}"> 
                         {{ csrf_field() }} 
 

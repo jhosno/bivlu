@@ -38,7 +38,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img class="navbar-brand" src="<?php echo e(asset('img/logo_white.png')); ?>" alt="BIVLU - Miguel Ángel Pérez Rodríguez"> Biblioteca "Miguel Ángel Pérez Rodríguez"</a>
+      <a class="navbar-brand img-fluid" href="<?php echo e(url('/')); ?>"><img class="navbar-brand" src="<?php echo e(asset('img/logo_white.png')); ?>" alt="BIVLU - Miguel Ángel Pérez Rodríguez"><span class="navbar-brand"> - Biblioteca "Miguel Ángel Pérez Rodríguez"</span></a>
     </div>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -181,17 +181,17 @@
         </div>
 
 <header>
-        <div class="container container-fluid">
-            <div class="intro-text ">
+        <div class="container">
+            <div class="intro-text">
                 <div class="intro-lead-in">
-                    <span ><img class="img-fluid" src="<?php echo e(asset('img/logo_blue.png')); ?>" alt="MARP - bivlu"></span>
+                    <span ><img class="" src="<?php echo e(asset('img/logo_blue.png')); ?>" alt="MARP - bivlu"></span>
                 </div>
                 
                 </div>
             </div>
         </header>
     <div class="welcome">
-        <div class="container container-fluid wrapper" ui-view> 
+        <div class="container wrapper" ui-view> 
          <?php echo $__env->yieldContent('content'); ?>
         </div> 
     </div>
@@ -305,8 +305,6 @@ $.alert({
 });
 <?php endif; ?>
  </script>
-    
     <?php echo $__env->yieldContent('scripts'); ?>
-    
 </body>
 </html>

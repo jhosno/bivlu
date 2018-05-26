@@ -4,7 +4,7 @@
     <li><a href="">Inicio</a></li> 
     <li><a href="">Registro de Libros</a></li> 
 </ul>
-
+<a  id="new-trigger" data-toggle="modal" data-titulo="Inicio de Sesión"  data-target="all-modal" class="btn btn-primary primary-btn"><i class="material-icons ">add</i> Agregar Item</a>
 <form method="POST" action="{{ url('ejemplares') }}" id="formaporno">
                     <input type="hidden" name="book_id" value="{{$libro->id}}"> 
                     </form>
@@ -29,10 +29,10 @@
 @foreach($data as $value)
         <tr>
             <td>{{ $value['correlativo'] }}</td> 
-            <td>{{ $value['estado_item'] }}</td> 
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{{ $value['n_registro'] }}</td> 
+            <td>{{ $value['n_ejemplar'] }}</td>
+            <td>{{ $value['cbn'] }}</td>
+            <td>{{ $value['estado_item'] }}</td>
             <td>
             <a title="Editar" onclick="paraEdit({{$value['id']}})" ><i class="material-icons ">create</i></a>
              
@@ -100,6 +100,9 @@ function paraEdit(id)
             console.log(data);
           }
       });
+}
+function(){
+
 }
 </script>
 @endsection
