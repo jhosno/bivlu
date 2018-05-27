@@ -50,9 +50,9 @@
       <li class="active">
         <a  href="#1" data-toggle="tab">Biografía MÁPR</a>
       </li>
-      <li><a href="#2" data-toggle="tab">Misión</a>
+      <li><a href="#2" data-toggle="tab">Visión</a>
       </li>
-      <li><a href="#3" data-toggle="tab">Visión</a>
+      <li><a href="#3" data-toggle="tab">Misión</a>
       </li>
       <li><a href="#4" data-toggle="tab">Normas de Uso</a>
       </li>

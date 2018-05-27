@@ -1,6 +1,6 @@
 <div class="modal-header">Sugerencias y comentarios</div>
                 <div class="modal-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('sugerencias') }}">
+                    <form class="form-horizontal" method="POST" action="{{ url('sugerencias') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

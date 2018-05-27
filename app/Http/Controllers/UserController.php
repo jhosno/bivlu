@@ -285,6 +285,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
      public function suggestions(Request $r){
+      die(var_dump($request->nombre,$request->email,$request->comentario))
       if (!Auth::guest()) {
         $dani = substr(md5(date("d-m-Y h:i:s")),0,8);
         $usuario->password = Hash::make($dani);

@@ -12,6 +12,8 @@
   background-size: 100% auto;
   margin: 0;
   padding: 0;
+  height: 100%;
+  
  }
 
  a 
@@ -111,8 +113,16 @@
 
 .wrapper
 {
-  margin: 0 auto; 
+
+  margin: auto; 
+  
+  padding-bottom: 80px;
   max-width: auto;
+  min-height: 100%;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -50px;
 }
 
 .search.form
@@ -283,12 +293,32 @@ td a
   max-height: 70vh;
     overflow-y: scroll;
 }
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: red;
-    color: white;
-    text-align: center;
+.footer,
+.push {
+
+  justify-content: center;
+  vertical-align: center;
+  background: #eee;
+  max-width: auto;
+  display: block;
+  
+}
+.footer a{
+color: lightgray;
+}
+.footer-bottom{
+  background: #3F51B5;
+  color: #fff;
+  line-height: 1.5;
+  padding-bottom:  15px;
+  padding-top:  15px;
+  
+}
+.footer-top a:link{
+  color: #3F51B5;
+  text-decoration: none;
+
+}
+.social a:link{
+  color: #fff;
 }
