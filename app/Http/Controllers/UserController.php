@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     { 
-        return view('users.indaex')->with('users',User::all());
+      return view('users.indaex')->with('users',User::all());
     }
 
     /**
@@ -38,50 +38,50 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $porDefectos = [ 
-    'Libros'=>['Mis Solicitudes'=>'','Mis Préstamos'=>'','Histórico de Préstamos'=>''], 
-    'Actividades'=> '', 
-        ];
-        
-        
-        echo $request;
-        print_r($request);
-        $u = new User();
-        $u->name = $request->nombres;
-        $u->email = $request->email;
-        $u->user_level = 'estudiante';
-        $u->human_id = $request->human_id;
-        $u->password = Hash::make($request->contrasena);
-        $u->domanda_di_securida = $request->domanda_di_securida;
-        $u->answer = Hash::make($request->answer);
-        
-        $u->save();
-        foreach($porDefectos as $modulo => $subPrivilegios)
+      $porDefectos = [ 
+        'Libros'=>['Mis Solicitudes'=>'','Mis Préstamos'=>'','Histórico de Préstamos'=>''], 
+        'Actividades'=> '', 
+      ];
+
+
+      echo $request;
+      print_r($request);
+      $u = new User();
+      $u->name = $request->nombres;
+      $u->email = $request->email;
+      $u->user_level = 'estudiante';
+      $u->human_id = $request->human_id;
+      $u->password = Hash::make($request->contrasena);
+      $u->domanda_di_securida = $request->domanda_di_securida;
+      $u->answer = Hash::make($request->answer);
+      die(var_dump($u))
+      $u->save();
+      foreach($porDefectos as $modulo => $subPrivilegios)
+      {
+        if(is_string($subPrivilegios))
         {
-            if(is_string($subPrivilegios))
-            {
-                $p = new Privilege();
-                $p->user_id = $u->id;
-                $p->modulo = $modulo;
-                $p->accion = null;
-                $p->url = $subPrivilegios;
-                $p->save();
-            }
-            else 
-            {
-                foreach ($subPrivilegios as $nombreSubprivilegio => $url) {
-                    $p = new Privilege();
-                    $p->user_id = $u->id;
-                    $p->modulo = $modulo;
-                    $p->accion = $nombreSubprivilegio;
-                    $p->url = $url;
-                    $p->save();
-                }
-            }
+          $p = new Privilege();
+          $p->user_id = $u->id;
+          $p->modulo = $modulo;
+          $p->accion = null;
+          $p->url = $subPrivilegios;
+          $p->save();
         }
-       parent::saveOperation("Inicio","Prestamos","registrado al usuario ".$request->nombres." (".$request->email.")");
-        $request->session()->flash('Éxito','Usuario registrado.');
-        return redirect('/');
+        else 
+        {
+          foreach ($subPrivilegios as $nombreSubprivilegio => $url) {
+            $p = new Privilege();
+            $p->user_id = $u->id;
+            $p->modulo = $modulo;
+            $p->accion = $nombreSubprivilegio;
+            $p->url = $url;
+            $p->save();
+          }
+        }
+      }
+      parent::saveOperation("Inicio","Prestamos","registrado al usuario ".$request->nombres." (".$request->email.")");
+      $request->session()->flash('Éxito','Usuario registrado.');
+      return redirect('/');
     }
 
     /**
@@ -103,9 +103,9 @@ class UserController extends Controller
      */
     public function edit(Request $r, $id)
     {
-        $usuario = User::find($id);
-        return view('users.edit')
-        ->with('listado',[
+      $usuario = User::find($id);
+      return view('users.edit')
+      ->with('listado',[
         'Registro'=>['Agregar'=>'','Modificar'=>'','Eliminar'=>'','Agregar Ejemplar'=>''],
         'Libros'=>['Mis Solicitudes'=>'','Mis Préstamos'=>'','Histórico de Préstamos'=>''],
         'Prestamos'=>['Solicitud'=>'','Devoluciones'=>''],
@@ -113,30 +113,30 @@ class UserController extends Controller
         'Actividades'=> '',
         'Consultas'=>['Individuales'=>'','Solventes y Morosos'=>'','Estadisticas'=>''],
         'Mantenimiento'=>['Usuarios'=>'','Respaldo'=>'','Restauracion'=>'','Bitacora'=>'']
-        ])->with('usuario',$usuario);
+      ])->with('usuario',$usuario);
     }
 
     public function fetchQuestion(Request $r )
     {
-        $usuario = User::where('email',$r->input('email'))->get();
-        if(count($usuario) === 0)
-        { 
-            $r->session()->flash('error',1);
-            return redirect('recuperacion');
-        }
-        return view('users.recuperacion')
-        ->with('usuario',$usuario);
+      $usuario = User::where('email',$r->input('email'))->get();
+      if(count($usuario) === 0)
+      { 
+        $r->session()->flash('error',1);
+        return redirect('recuperacion');
+      }
+      return view('users.recuperacion')
+      ->with('usuario',$usuario);
     }
 
 
     public function reset(Request $r )
     {
-        $usuario = User::find($r->input('id'));
-        $usuario->password = Hash::make($r->password);
-        $usuario->save();
-        $r->session()->flash('canvio',1);
-        return view('welcome')
-        ->with('usuario',$usuario); 
+      $usuario = User::find($r->input('id'));
+      $usuario->password = Hash::make($r->password);
+      $usuario->save();
+      $r->session()->flash('canvio',1);
+      return view('welcome')
+      ->with('usuario',$usuario); 
     }
 
     public function ask4Pass(Request $r )
@@ -182,26 +182,26 @@ class UserController extends Controller
             'method'  => 'POST',
             'content' => "{
               \"personalizations\": [
+              {
+                \"to\": [
                 {
-                  \"to\": [
-                    {
-                      \"email\": \"{$usuario->email}\"
-                    }
-                  ],
-                  \"subject\": \"Recuperacion de clave\"
+                  \"email\": \"{$usuario->email}\"
                 }
+                ],
+                \"subject\": \"Recuperacion de clave\"
+              }
               ],
               \"from\": {
                 \"email\": \"bivlu@upta.edu.ve\"
-              },
-              \"content\": [
+                },
+                \"content\": [
                 {
                   \"type\": \"text/plain\",
                   \"value\": \"Su nueva clave es: $dani\"
                 }
-              ]
-            }"
-          )
+                ]
+              }"
+            )
         );
         $context  = stream_context_create($options);
         $result = file_get_contents($url, false, $context);
@@ -225,9 +225,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {  
-        Privilegio::where('user_id',$id)->delete();
+      Privilegio::where('user_id',$id)->delete();
 
-        $privile=[
+      $privile=[
         'Registro'=>['Agregar'=>'','Modificar'=>'','Eliminar'=>'','Agregar Ejemplar'=>''],
         'Libros'=>['Mis Solicitudes'=>url('virtuales'),'Mis Préstamos'=>url('prestamos'),'Histórico de Préstamos'=>url('historial')],
         'Prestamos'=>['Solicitud'=>url('virtuales'),'Devoluciones'=>url('prestamos')],
@@ -235,36 +235,36 @@ class UserController extends Controller
         'Actividades'=> url('actividades'),
         'Consultas'=>['Individuales'=>url('consultas'),'Solventes y Morosos'=>url('reportes'),'Estadisticas'=>url('estadisticas')],
         'Mantenimiento'=>['Usuarios'=>url('usuarios'),'Respaldo'=>url('respaldo'),'Restauracion'=>url('restauracion'),'Bitacora'=>url('bitacora')]
-        ];
-        foreach($privile as $modulo => $subPrivilegios)
+      ];
+      foreach($privile as $modulo => $subPrivilegios)
+      {
+        if(is_string($subPrivilegios) && $request->input("privilegio_$modulo",false)!==false)
         {
-            if(is_string($subPrivilegios) && $request->input("privilegio_$modulo",false)!==false)
-            {
-                $p = new Privilegio();
-                $p->user_id =  $id;
-                $p->modulo = $modulo;
-                $p->accion = null;
-                $p->url_privilegio = $subPrivilegios;
-                $p->save();
-            }
-            else if(is_array($subPrivilegios))
-            { 
-                foreach ($subPrivilegios as $nombreSubprivilegio => $url) {
-                    $priviqueen = str_replace(' ','_',"privilegio_$modulo"."_".$nombreSubprivilegio);
-                    if($request->input($priviqueen,false)!==false)
-                    {
-                    $p = new Privilegio();
-                    $p->user_id = $request->input("user_id",false);
-                    $p->modulo = $modulo;
-                    $p->accion = $nombreSubprivilegio;
-                    $p->url_privilegio = $url;
-                    $p->save();
-                    }
-                }
-            }
+          $p = new Privilegio();
+          $p->user_id =  $id;
+          $p->modulo = $modulo;
+          $p->accion = null;
+          $p->url_privilegio = $subPrivilegios;
+          $p->save();
         }
-       parent::saveOperation("Inicio","Usuarios","modificado privilegios del usuario # $id");
-        return redirect('usuarios');
+        else if(is_array($subPrivilegios))
+        { 
+          foreach ($subPrivilegios as $nombreSubprivilegio => $url) {
+            $priviqueen = str_replace(' ','_',"privilegio_$modulo"."_".$nombreSubprivilegio);
+            if($request->input($priviqueen,false)!==false)
+            {
+              $p = new Privilegio();
+              $p->user_id = $request->input("user_id",false);
+              $p->modulo = $modulo;
+              $p->accion = $nombreSubprivilegio;
+              $p->url_privilegio = $url;
+              $p->save();
+            }
+          }
+        }
+      }
+      parent::saveOperation("Inicio","Usuarios","modificado privilegios del usuario # $id");
+      return redirect('usuarios');
     }
 
     /**
@@ -283,86 +283,21 @@ class UserController extends Controller
      * Sends users comments.
      *
      * @return \Illuminate\Http\Response
-     */
-     public function suggestions(Request $r){
-      die(var_dump($request->nombre,$request->email,$request->comentario))
-      if (!Auth::guest()) {
-        $dani = substr(md5(date("d-m-Y h:i:s")),0,8);
-        $usuario->password = Hash::make($dani);
-        $usuario->save();
-        ///////
+     
+    
+  public function index(Request $request)
+  { 
+    $human_id = $request->human_id;
+    $arreglo = [];
+    $rs = User::where('human_id',"$human_id")
+    ->get()
+    ->toArray(); 
+    return $rs;
 
-        $app_email = "bivlu.upta@gmail.com";
-
-        $url = 'https://api.sendgrid.com/v3/mail/send';
-        $data = [
-          "personalizations" => [
-
-            "to" => [
-              ["email" => $app_email]
-            ],
-            "subject" => $r->topic
-
-          ],
-          "from" => [
-            ["email" => $r->email]
-          ],
-          "content" => [
-
-            "type" => "text/plain",
-            "value" => $r->message
-
-          ]
-        ];
-        $apikey = '';
-        $options = array(
-          'http' => array(
-            'header'  => "Content-type: application/json\r\n".
-            "Authorization: Bearer $apikey\r\n",
-            'method'  => 'POST',
-            'content' => "{
-              \"personalizations\": [
-                {
-                  \"to\": [
-                    {
-                      \"email\": \"$app_email\"
-                    }
-                  ],
-                  \"subject\": \"{$r->topic}\"
-                }
-              ],
-              \"from\": {
-                \"email\": \"{$usuario->email}\"
-              },
-              \"content\": [
-                {
-                  \"type\": \"text/plain\",
-                  \"value\": \"{$r->message}\"
-                }
-              ]
-            }"
-          )
-        );
-        $context  = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
-        if ($result === FALSE) { 
-          die("Error Inesperado ha ocurrido. Contacte con el administrador.");
-        } 
-
-        return view('users.nuevaclave')
-        ->with('usuario',$usuario); 
-      } 
-      $r->session()->flash('error2',1);
-      return redirect('recuperacion');
-    }
-}
-    public function index(Request $request)
-    { 
-        $human_id = $request->human_id;
-        $arreglo = [];
-        $rs = User::where('human_id',"$human_id")
-                ->get()
-                ->toArray(); 
-                return $rs;
+  }
+  */
+  public function suggestions(Request $r )
+    {
 
     }
+  }

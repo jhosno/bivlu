@@ -1,6 +1,6 @@
 <div class="modal-header">Nuevo Usuario</div>
 <div class="modal-body">
-    <form class="form-horizontal" method="POST" onsubmit="return validar();" action="{{ url('student') }}">
+    <form class="form-horizontal" method="POST" onsubmit="return validar();" action="{{ url('estudiantes') }}">
 
         <input type="hidden" name="human_id" > 
         <input type="hidden" name="tranca" required title="Debe ingresar una cédula existente en sistema.">

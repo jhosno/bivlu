@@ -51,7 +51,7 @@
                     <li><a href="<?php echo e(url('actividades')); ?>">Actividades</a></li>
                     <li><a href="<?php echo e(url('acerca-de')); ?>">Nosotros</a></li>
                     <!-- Suggestions -->
-                    <li><a data-toggle="modal" data-titulo="Tú opinión es importante" data-load="<?php echo e(url('sugerencias')); ?>" data-target="#all-modal" id="suggestions-trigger">Sugerencias<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></a></li>
+                    <li><a data-toggle="modal" data-titulo="Sugerencias" data-load="<?php echo e(url('login')); ?>" data-target="#all-modal" id="suggestions-trigger" >Sugerencias</a></li>
 
                     <li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="<?php echo e(url('login')); ?>" data-target="#all-modal" ><button id="login-trigger" class="btn btn-raised btn-warning btn-sm">¡Entrar!</button></a></li>
                     <li><a data-toggle="modal"  data-load="<?php echo e(url('signup')); ?>" data-target="#all-modal" ><button id="signup-trigger" class="btn btn-raised btn-warning btn-sm">Registrarse</button></a></li>
@@ -293,7 +293,7 @@
             data:{},
             success:function(data)
             {
-              $('#suggestions-modal').html(data);
+              $('#all-modal').html(data);
           }
       });
       });

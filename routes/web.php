@@ -21,6 +21,10 @@ Route::get('acerca-de', function () {
 Route::get('ayuda', function () {
     return view('ayuda');
 });
+Route::get('sugerencias', function () {
+    return view('suggestions');
+});
+
 
 Auth::routes();
 Route::get('libros/listado','BookController@listado');
