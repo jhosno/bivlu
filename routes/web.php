@@ -21,9 +21,12 @@ Route::get('acerca-de', function () {
 Route::get('ayuda', function () {
     return view('ayuda');
 });
+
 Route::get('sugerencias', function () {
-    return view('suggestions');
+    return view('sugerencias');
 });
+
+Route::post('sugerencias', 'UserController@suggestions'); 
 
 
 Auth::routes();
@@ -67,7 +70,7 @@ Route::get('recuperacion', function(){
 Route::post('recuperacion', 'UserController@fetchQuestion'); 
 Route::put('recuperacion', 'UserController@ask4Pass'); 
 Route::post('recuperar', 'UserController@reset'); 
-Route::post('sugerencias', 'UserController@suggestions'); 
+
 
 Route::get('listados', 'QueryController@listado'); 
 Route::resource('consultas','QueryController');

@@ -43,7 +43,8 @@ class StudentController extends Controller
     'Actividades'=> url('actividades'), 
         ];
         $u = new User();
-        $u->name = $request->nombres;
+        $name = explode(' ', $request->nombres);
+        $u->name = $name[0];
         $u->email = $request->email;
         $u->user_level = 'estudiante';
         $u->human_id = $request->human_id;

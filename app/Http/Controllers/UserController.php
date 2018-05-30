@@ -52,9 +52,7 @@ class UserController extends Controller
       $u->user_level = 'estudiante';
       $u->human_id = $request->human_id;
       $u->password = Hash::make($request->contrasena);
-      $u->domanda_di_securida = $request->domanda_di_securida;
-      $u->answer = Hash::make($request->answer);
-      die(var_dump($u))
+
       $u->save();
       foreach($porDefectos as $modulo => $subPrivilegios)
       {

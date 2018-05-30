@@ -50,19 +50,25 @@
                 <?php if(Auth::guest()): ?>
                     <li><a href="<?php echo e(url('actividades')); ?>">Actividades</a></li>
                     <li><a href="<?php echo e(url('acerca-de')); ?>">Nosotros</a></li>
-                    <!-- Suggestions -->
-                    <li><a data-toggle="modal" data-titulo="Sugerencias" data-load="<?php echo e(url('login')); ?>" data-target="#all-modal" id="suggestions-trigger" >Sugerencias</a></li>
+
+
+
+
+                    <!-- Suggestions -->                 
+                    <li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="<?php echo e(url('sugerencias')); ?>" data-target="#all-modal" ><button id="sugerencias-trigger" class="btn btn-sm">¡Entrar!</button></a></li>
+                    <li><a data-toggle="modal" data-titulo="Envíanos tus comentarios y sugerencias" data-load="<?php echo e(url('sugerencias')); ?>" data-target="#my-modal" ><button id="sugerencias-trigger" class="btn btn-sm" style="color: #fff;">Sugerencias</button></a></li>
+                    <!-- Suggestions -->   
+
+
+
+
+
+
+
 
                     <li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="<?php echo e(url('login')); ?>" data-target="#all-modal" ><button id="login-trigger" class="btn btn-raised btn-warning btn-sm">¡Entrar!</button></a></li>
                     <li><a data-toggle="modal"  data-load="<?php echo e(url('signup')); ?>" data-target="#all-modal" ><button id="signup-trigger" class="btn btn-raised btn-warning btn-sm">Registrarse</button></a></li>
                     <?php elseif(Auth::user()->user_level=='admin'): ?>
-
-
-
-
-
-
-
 
 
                         <li><a href="<?php echo e(url('libros/listado')); ?>">Registro</a></li> 
@@ -116,6 +122,7 @@
                                 </a></li>
                                 <li><a href="<?php echo e(url('ayuda')); ?>">Ayuda <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> </a></li>
                                 <!-- suggestion-->
+                                
                                 <li><a href="<?php echo e(url('sugerencias')); ?>">Sugerencias <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> </a></li>
 
                                 
@@ -166,97 +173,100 @@
                                     <li><a href="<?php echo e(url('foto')); ?>">Perfil</a></li>
                                     <li><a href="<?php echo e(url('ayuda')); ?>"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Ayuda</a></li>
                                     <!-- Suggestion-->
-                                    
-                                    <li><a data-toggle="modal" data-titulo="Tu opinión es importante" data-load="<?php echo e(url('sugerencias')); ?>" data-target="#suggestions-modal" > Sugerencias</a></li>
+                                    <li><a data-toggle="modal" data-titulo="Sugerencias" data-load="<?php echo e(url('login')); ?>" data-target="#all-modal" id="login-trigger" >Sugerencias
+                                        <i class="fa fa-comment-dots"></i></a></li>
+                                        <li><a data-toggle="modal" data-titulo="Tu opinión es importante" data-load="<?php echo e(url('sugerencias')); ?>" data-target="#suggestions-modal" > Sugerencias</a></li>
 
-                                    <li> Acerca de</li>
+                                        <li> Acerca de</li>
 
-                                    <li><a  class="btn btn-raised btn-warning btn-sm" href="<?php echo e(url('salir')); ?>">Salir</a> </li>
-                                </ul>
-                            </li> 
-                        <?php endif; ?>
-                    </ul>
+                                        <li><a  class="btn btn-raised btn-warning btn-sm" href="<?php echo e(url('salir')); ?>">Salir</a> </li>
+                                    </ul>
+                                </li> 
+                            <?php endif; ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="welcome">
-            <div class="container container-fluid wrapper" ui-view> 
-               <?php echo $__env->yieldContent('content'); ?>
+            <div class="welcome">
+                <div class="container container-fluid wrapper" ui-view> 
+                   <?php echo $__env->yieldContent('content'); ?>
 
-           </div> 
-
+               </div> 
 
 
+
+           </div>
        </div>
-   </div>
-   <div class="push">
-    <div class="footer-top text-center ">
-        <div>
-            <h4>Enlaces de la institución</h4>
-            <p>
-                <a href="upta.edu.ve/"> UPT Aragua </a> | 
-                <a href="dace.upta.edu.ve/"> DACE </a> | 
-                <a href="eva.upta.edu.ve/"> Aula virtual </a> | 
-                <a href="https://www.facebook.com/UptAragua/"> <i class=" fa fa-facebook">   </i> </a> </li>
-                <a href="https://twitter.com/uptaragua"> <i class="fa fa-twitter">   </i> </a> </li>
-            </p>
+       <!-- FOOTER -->
+       <div class="push">
+        <div class="footer-top text-center ">
+            <div>
+                <h4>Enlaces de la institución</h4>
+                <p>
+                    <a href="upta.edu.ve/"> UPT Aragua </a> | 
+                    <a href="dace.upta.edu.ve/"> DACE </a> | 
+                    <a href="eva.upta.edu.ve/"> Aula virtual </a> | 
+                    <a href="https://www.facebook.com/UptAragua/"> <i class=" fa fa-facebook">   </i> </a> </li>
+                    <a href="https://twitter.com/uptaragua"> <i class="fa fa-twitter">   </i> </a> </li>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom ">
+            <div class="text-center"><p>Desarrollado por Jhosnoirlit Hernández. 2017 - 2018</p></div>
+            <div class="text-center social">
+                <a href="https://twitter.com/jhosno"> <i class="fa fa-twitter fa-lg">   </i> </a> 
+                <a href="https://github.com/jhosno"> <i class="fa fa-github fa-lg">   </i> </a> 
+            </div>
         </div>
     </div>
-    <div class="footer-bottom ">
-        <div class="text-center"><p>Desarrollado por Jhosnoirlit Hernández. 2017 - 2018</p></div>
-        <div class="text-center social">
-            <a href="https://twitter.com/jhosno"> <i class="fa fa-twitter fa-lg">   </i> </a> 
-            <a href="https://github.com/jhosno"> <i class="fa fa-github fa-lg">   </i> </a> 
-        </div>
-    </div>
+
 </div>
-<div class="footer"></div>
-</div>
-<div id="all-modal" class="modal  modal-lg fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div id="all-modal" class="modal  modal-lg fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="all-modal" class="modal  modal-lg fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
+<div id="all-modal" class="modal  modal-lg fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<div id="all-modal" class="modal  modal-lg fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
 
-        <!-- Scripts -->
-        <script src="<?php echo e(asset('js/jquery-ui.min.js')); ?>"></script>
-        <script src="<?php echo e(asset('js/jquery-confirm.js')); ?>"></script>
-        <script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
-        <script src="<?php echo e(asset('js/material.min.js')); ?>"></script>
-        <script src="<?php echo e(asset('js/moment.min.js')); ?>"></script>
-        <script src="<?php echo e(asset('js/fullcalendar.min.js')); ?>"></script>
-        <script src="<?php echo e(asset('js/bootstrap-datetimepicker.min.js')); ?>"></script>
-        <script src="<?php echo e(asset('js/datatables.min.js')); ?>"></script>
-        <script src="<?php echo e(asset('js/datatables.css')); ?>"></script>
-        <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.15/js/jquery.dataTables.min.js"></script> -->
-        <script type="text/javascript">
-            $(function(){ $('.orderedtable').dataTable(
-            {
-                "sProcessing":     "Procesando...",
-                "sLengthMenu":     "Mostrar _MENU_ registros",
-                "sZeroRecords":    "No se encontraron resultados",
-                "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix":    "",
-                "sSearch":         "Buscar:",
-                "sUrl":            "",
-                "sInfoThousands":  ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst":    "Primero",
-                    "sLast":     "Último",
-                    "sNext":     "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "oAria": {
-                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                } 
-            }
-            );});
+<!-- Scripts -->
+<script src="<?php echo e(asset('js/jquery-ui.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/jquery-confirm.js')); ?>"></script>
+<script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/material.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/moment.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/fullcalendar.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/bootstrap-datetimepicker.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/datatables.min.js')); ?>"></script>
+<script src="<?php echo e(asset('js/datatables.css')); ?>"></script>
+<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.15/js/jquery.dataTables.min.js"></script> -->
+<script type="text/javascript">
+    $(function(){ $('.orderedtable').dataTable(
+    {
+        "sProcessing":     "Procesando...",
+        "sLengthMenu":     "Mostrar _MENU_ registros",
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Buscar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        } 
+    }
+    );});
 
-            $('#signup-trigger').on('click', function (event) {
+    $('#signup-trigger').on('click', function (event) {
           var button = $(event.relatedTarget); // Button that triggered the modal
 
           $.ajax({
@@ -270,7 +280,7 @@
       });
       });
 
-            $('#login-trigger').on('click', function (event) {
+    $('#login-trigger').on('click', function (event) {
           var button = $(event.relatedTarget); // Button that triggered the modal
 
           $.ajax({
@@ -284,12 +294,12 @@
       });
       });
 
-            $('#suggestions-trigger').on('click', function (event) {
+    $('#sugerencias-trigger').on('click', function (event) {
           var button = $(event.relatedTarget); // Button that triggered the modal
 
           $.ajax({
             url: '<?php echo e(url('sugerencias')); ?>',
-            method:'POST',
+            method:'GET',
             data:{},
             success:function(data)
             {
@@ -298,29 +308,30 @@
       });
       });
 
-            setInterval(function(){
-                $.ajax({
-                    url: '<?php echo e(url('notifications')); ?>',
-                    method:'GET',
-                    data:{},
-                    success:function(data)
-                    {
-                      console.log(data);
-                      var eamount = data.event_notif;
-                      var lamount = data.loan_notif;
-                      if(eamount) $('#events_opt').html('<span class="label label-warning">'+eamount+'</span>');          
-                      if(lamount) $('#loans_opt').html('<span class="label label-warning">'+lamount+'</span>'); 
-                  }
-              });
-            },4000);
-            <?php if(Session::has('deudas')): ?>
-                $.alert({
-                    title: 'Tiene préstamos vencidos.',
-                    content: 'No se encuentra solvente con la biblioteca, diríjase a Mis Préstamos para ver cuál libro tiene pendiente.' ,
-                    type: 'red'
-                });
-            <?php endif; ?>
-        </script>
-        <?php echo $__env->yieldContent('scripts'); ?>
-    </body>
-    </html>
+
+    setInterval(function(){
+        $.ajax({
+            url: '<?php echo e(url('notifications')); ?>',
+            method:'GET',
+            data:{},
+            success:function(data)
+            {
+              console.log(data);
+              var eamount = data.event_notif;
+              var lamount = data.loan_notif;
+              if(eamount) $('#events_opt').html('<span class="label label-warning">'+eamount+'</span>');          
+              if(lamount) $('#loans_opt').html('<span class="label label-warning">'+lamount+'</span>'); 
+          }
+      });
+    },4000);
+    <?php if(Session::has('deudas')): ?>
+        $.alert({
+            title: 'Tiene préstamos vencidos.',
+            content: 'No se encuentra solvente con la biblioteca, diríjase a Mis Préstamos para ver cuál libro tiene pendiente.' ,
+            type: 'red'
+        });
+    <?php endif; ?>
+</script>
+<?php echo $__env->yieldContent('scripts'); ?>
+</body>
+</html>
