@@ -55,8 +55,8 @@
 
 
                     <!-- Suggestions -->                 
-                    <li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="<?php echo e(url('sugerencias')); ?>" data-target="#all-modal" ><button id="sugerencias-trigger" class="btn btn-sm">¡Entrar!</button></a></li>
-                    <li><a data-toggle="modal" data-titulo="Envíanos tus comentarios y sugerencias" data-load="<?php echo e(url('sugerencias')); ?>" data-target="#my-modal" ><button id="sugerencias-trigger" class="btn btn-sm" style="color: #fff;">Sugerencias</button></a></li>
+                    <li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="<?php echo e(url('sugerencias')); ?>" data-target="#all-modal" ><button id="sugerencias-trigger" class="btn btn-sm" style="color: #fff;">Sugerencias</button></a></li>
+                    
                     <!-- Suggestions -->   
 
 
@@ -122,8 +122,7 @@
                                 </a></li>
                                 <li><a href="<?php echo e(url('ayuda')); ?>">Ayuda <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> </a></li>
                                 <!-- suggestion-->
-                                
-                                <li><a href="<?php echo e(url('sugerencias')); ?>">Sugerencias <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> </a></li>
+                    <li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="<?php echo e(url('sugerencias')); ?>" data-target="#all-modal" id="sugerencias-trigger">Sugerencias</a></li>
 
                                 
                                 <li><a  class="btn btn-raised btn-warning btn-sm" href="<?php echo e(url('salir')); ?>">Salir</a> </li>
@@ -173,9 +172,8 @@
                                     <li><a href="<?php echo e(url('foto')); ?>">Perfil</a></li>
                                     <li><a href="<?php echo e(url('ayuda')); ?>"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Ayuda</a></li>
                                     <!-- Suggestion-->
-                                    <li><a data-toggle="modal" data-titulo="Sugerencias" data-load="<?php echo e(url('login')); ?>" data-target="#all-modal" id="login-trigger" >Sugerencias
-                                        <i class="fa fa-comment-dots"></i></a></li>
-                                        <li><a data-toggle="modal" data-titulo="Tu opinión es importante" data-load="<?php echo e(url('sugerencias')); ?>" data-target="#suggestions-modal" > Sugerencias</a></li>
+                    <li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="<?php echo e(url('sugerencias')); ?>" data-target="#all-modal" id="sugerencias-trigger">Sugerencias</a></li>
+
 
                                         <li> Acerca de</li>
 

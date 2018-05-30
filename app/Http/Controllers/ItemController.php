@@ -120,11 +120,12 @@ class ItemController extends Controller
     {
         $it = Item::find($item);
         $id = Item::find($item)->id;
-        var_dump($id);
-        $item = "Desincorporado";
-        $Item->save();
+        $book_id = $it->book_id;
+        $it->estado_item = "DESINCORPORADO";
+        $it->save();
+        //die(var_dump($it));
         $request->session()->flash('Éxito','Ejemplar Desincorporado.');
        parent::saveOperation("Inicio","Registro","Desincorporado  el ejemplar ".$it->correlativo." del libro".$it->book->titulo);
-        return redirect('ejemplares/'.$id);
+        return redirect('ejemplares/'.$book_id);
     }
 }

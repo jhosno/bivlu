@@ -163,7 +163,7 @@ class UserController extends Controller
 
           ],
           "from" => [
-            ["email" => "bivlu@upta.edu.ve"]
+            ["email" => "BIVLU"]
           ],
           "content" => [
 
@@ -190,7 +190,7 @@ class UserController extends Controller
               }
               ],
               \"from\": {
-                \"email\": \"bivlu@upta.edu.ve\"
+                \"email\": \"BIVLU\"
                 },
                 \"content\": [
                 {
@@ -296,6 +296,66 @@ class UserController extends Controller
   */
   public function suggestions(Request $r )
     {
+      /*  die(var_dump($r->name, $r->asunto, $r->email, $r->message));
+      $usuario = User::find($r->input('id'));*/
+      $bivlu = 'bivlu.upta@gmail.com';
+              
+        $url = 'https://api.sendgrid.com/v3/mail/send';
+        $data = [
+          "personalizations" => [
 
-    }
+            "to" => [
+              ["email" => $bivlu]
+            ],
+            "subject" => $r->asunto
+
+          ],
+          "from" => [
+            ["email" => $r->email]
+          ],
+          "content" => [
+
+            "type" => "text/plain",
+            "value" => $r->message
+
+          ]
+        ];
+        $apikey = '';
+        $options = array(
+          'http' => array(
+            'header'  => "Content-type: application/json\r\n".
+            "Authorization: Bearer $apikey\r\n",
+            'method'  => 'POST',
+            'content' => "{
+              \"personalizations\": [
+              {
+                \"to\": [
+                {
+                  \"email\": \"{$bivlu}\"
+                }
+                ],
+                \"subject\": \"{$r->asunto}\"
+              }
+              ],
+              \"from\": {
+                \"email\": \"{$r->email}\"
+                },
+                \"content\": [
+                {
+                  \"type\": \"text/plain\",
+                  \"value\": \{$r->message}\"
+                }
+                ]
+              }"
+            )
+        );
+        $context  = stream_context_create($options);
+        /*$result = file_get_contents($url, false, $context);
+        if ($result === FALSE) { 
+          die("Su mensaje no pudo ser enviado. Intente de nuevo.");
+        }*/
+        return redirect('/');
+      } 
+
+    
   }

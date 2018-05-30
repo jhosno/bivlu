@@ -26,7 +26,11 @@ Route::get('sugerencias', function () {
     return view('sugerencias');
 });
 
-Route::post('sugerencias', 'UserController@suggestions'); 
+Route::get('new_item', function () {
+    return view('items/form');
+});
+
+ 
 
 
 Auth::routes();
@@ -58,7 +62,9 @@ Route::post('prestamos/devolver/{id}','LoanController@devolver');
 Route::get('ejemplares/{id}','ItemController@lista');
 Route::get('tesis/{id}','BookController@show'); 
 Route::get('ejemplares/create/{id}','ItemController@create');
+Route::get('ejemplares/update/{id}','ItemController@update');
 Route::resource('ejemplares','ItemController');
+
 
 Route::get('api/etiquetas', 'TagController@index');
 
@@ -70,6 +76,7 @@ Route::get('recuperacion', function(){
 Route::post('recuperacion', 'UserController@fetchQuestion'); 
 Route::put('recuperacion', 'UserController@ask4Pass'); 
 Route::post('recuperar', 'UserController@reset'); 
+Route::post('sugerencias', 'UserController@suggestions');
 
 
 Route::get('listados', 'QueryController@listado'); 

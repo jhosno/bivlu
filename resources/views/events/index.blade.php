@@ -5,7 +5,7 @@
     <li><a href="">Actividades del Mes</a></li> 
 </ul>
 
-<a  id="new-trigger" data-toggle="modal" data-titulo="Inicio de Sesión"  data-target="all-modal" class="btn btn-primary primary-btn"><i class="material-icons ">add</i> Agregar evento</a>
+<a  id="new-trigger" data-toggle="modal" data-titulo="Nuevo envento"  data-target="all-modal" class="btn btn-primary primary-btn"><i class="material-icons ">add</i> Agregar evento</a>
 <div class="evento">
     
 </div>

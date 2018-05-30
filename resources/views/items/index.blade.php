@@ -4,7 +4,9 @@
     <li><a href="">Inicio</a></li> 
     <li><a href="">Registro de Libros</a></li> 
 </ul>
-<a  id="new-trigger" data-toggle="modal" data-titulo="Inicio de Sesión"  data-target="all-modal" class="btn btn-primary primary-btn"><i class="material-icons ">add</i> Agregar Item</a>
+                
+<a data-toggle="modal" data-titulo="Nuevo Ejemplars" data-load="<?php echo e(url('sugerencias')); ?>" data-target="#all-modal" ><button id="new-trigger" class="btn btn-primary primary-btn" ><i class="material-icons ">add</i>Agregar ítems</button></a>
+
 <form method="POST" action="{{ url('ejemplares') }}" id="formaporno">
                     <input type="hidden" name="book_id" value="{{$libro->id}}"> 
                     </form>
@@ -36,7 +38,7 @@
             <td>
             <a title="Editar" onclick="paraEdit({{$value['id']}})" ><i class="material-icons ">create</i></a>
              
-            <a  title="Eliminar" onclick="if(confirm('En verdad desea eliminar el ejemplar?')){$('#miforma').attr('action','{{url('ejemplares')}}/'+{{$value['id']}}).submit();}" ><i class="material-icons ">delete</i></a>
+            <a  title="Eliminar" onclick="if(confirm('¿Desea desincorporar el ejemplar?')){$('#miforma').attr('action','{{url('ejemplares')}}/'+{{$value['id']}}).submit();}" ><i class="material-icons ">delete</i></a>
             </td>
         </tr>
 @endforeach
