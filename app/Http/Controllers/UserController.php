@@ -173,7 +173,7 @@ class UserController extends Controller
           ]
         ];
             
-        $apikey = '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';
+        $apikey = '';
         $options = array(
           'http' => array(
             'header'  => "Content-type: application/json\r\n".
@@ -320,7 +320,7 @@ class UserController extends Controller
           ]
         ];
             
-        $apikey = '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';
+        $apikey = '';
         $options = array(
           'http' => array(
             'header'  => "Content-type: application/json\r\n".
