@@ -62,7 +62,9 @@ Route::post('prestamos/devolver/{id}','LoanController@devolver');
 Route::get('ejemplares/{id}','ItemController@lista');
 Route::get('tesis/{id}','BookController@show'); 
 Route::get('ejemplares/create/{id}','ItemController@create');
-Route::get('ejemplares/update/{id}','ItemController@update');
+Route::post('ejemplares/store','ItemController@store');
+Route::get('ejemplares/edit','ItemController@edit');
+
 Route::resource('ejemplares','ItemController');
 
 

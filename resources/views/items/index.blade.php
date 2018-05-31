@@ -5,12 +5,12 @@
     <li><a href="">Registro de Libros</a></li> 
 </ul>
                 
-<a data-toggle="modal" data-titulo="Nuevo Ejemplars" data-load="<?php echo e(url('sugerencias')); ?>" data-target="#all-modal" ><button id="new-trigger" class="btn btn-primary primary-btn" ><i class="material-icons ">add</i>Agregar ítems</button></a>
+<a   id="new-trigger" class="btn btn-primary primary-btn"><i class="material-icons ">add</i> Agregar ejemplar</a>
 
-<form method="POST" action="{{ url('ejemplares') }}" id="formaporno">
+<!--<form method="POST" action="{{ url('ejemplares') }}" id="formaporno">
                     <input type="hidden" name="book_id" value="{{$libro->id}}"> 
                     </form>
-<a    class="btn btn-primary primary-btn" onclick="$('#formaporno').submit();">Agregar Ejemplar</a>
+<a    class="btn btn-primary primary-btn" onclick="$('#formaporno').submit();">Agregar Ejemplar</a>-->
 <a   class="btn btn-primary primary-btn" href="{{url('libros/listado')}}">Volver a Registro de Libros</a>
 
 <table class="table">
@@ -36,7 +36,7 @@
             <td>{{ $value['cbn'] }}</td>
             <td>{{ $value['estado_item'] }}</td>
             <td>
-            <a title="Editar" onclick="paraEdit({{$value['id']}})" ><i class="material-icons ">create</i></a>
+             <a title="Editar" onclick="paraEdit({{$value['id']}})" title="Editar" ><i class="material-icons ">create</i></a>
              
             <a  title="Eliminar" onclick="if(confirm('¿Desea desincorporar el ejemplar?')){$('#miforma').attr('action','{{url('ejemplares')}}/'+{{$value['id']}}).submit();}" ><i class="material-icons ">delete</i></a>
             </td>
@@ -89,7 +89,7 @@ function paraEdit(id)
 {
 
           $.ajax({
-            url: '{{url('libros')}}/'+id+'/edit',
+            url: '{{url('ejemplares/edit/'.$libro['id'])}}',
             method:'GET',
             data:{},
             success:function(data)
@@ -102,9 +102,6 @@ function paraEdit(id)
             console.log(data);
           }
       });
-}
-function(){
-
 }
 </script>
 @endsection

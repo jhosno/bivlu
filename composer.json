@@ -10,6 +10,7 @@
         "laravel/tinker": "~1.0",
         "barryvdh/laravel-dompdf": "*",
         "s-ichikawa/laravel-sendgrid-driver": "~2.0"
+        "sendgrid/sendgrid": "~7"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -50,4 +51,5 @@
         "sort-packages": true,
         "optimize-autoloader": true
     }
+
 }

@@ -14,9 +14,10 @@
     </caption>
     <thead>
         <tr>
+    
             <th>Título</th>
             <th>Tipo</th>
-            <th>Páginas</th>
+            <th>Año de edición</th>
             <th>Ejemplares Disponibles</th>
             <th>Autores</th>
             <th>Etiquetas</th>
@@ -26,6 +27,7 @@
     <tbody>
 @foreach($data as $value)
         <tr>
+
             <td>{{ $value['titulo'] }}</td> 
             <td>
             @if($value['clasificacion']==1) 
@@ -39,7 +41,7 @@
             @endif
              
             </td>
-            <td>{{ $value['numero_paginas'] }}</td> 
+            <td>{{ $value['anio_edicion'] }}</td> 
             <td>{{ $value['disponibles'] }}</td> 
             <td>
         @foreach($value['authors'] as $a) 
@@ -51,7 +53,10 @@
                     <span class="label label-success">{{ $t['palabras'] }}</span>
         @endforeach
             </td> 
-            <td><a title="Editar" onclick="paraEdit({{$value['id']}})" title="Editar" ><i class="material-icons ">create</i></a><a  onclick="if(confirm('En verdad desea eliminar el libro?')){$('#miforma').attr('action','{{url('libros')}}/'+{{$value['id']}}).submit();}" title="Eliminar" ><i class="material-icons ">delete</i></a><a  href="{{url('ejemplares/'.$value['id'])}}" title="Ver Ejemplares"><i class="material-icons ">book</i></a>
+            <td>
+                <a title="Editar" onclick="paraEdit({{$value['id']}})" title="Editar" ><i class="material-icons ">create</i></a>
+                <a  onclick="if(confirm('En verdad desea eliminar el libro?')){$('#miforma').attr('action','{{url('libros')}}/'+{{$value['id']}}).submit();}" title="Eliminar" ><i class="material-icons ">delete</i></a>
+                <a  href="{{url('ejemplares/'.$value['id'])}}" title="Ver Ejemplares"><i class="material-icons ">book</i></a>
             </td>
         </tr>
 @endforeach

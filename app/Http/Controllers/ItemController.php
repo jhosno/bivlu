@@ -36,10 +36,10 @@ class ItemController extends Controller
     public function create($id)
     {
         $libro = Book::find($id);
-        return view('items.form')->with(
-            [
+        $book_id = $libro->id;
 
-            'accion'=>'Nuevo Ejemplar',
+        return view('items.form')->with(
+            ['accion'=>'Nuevo Ejemplar',
             'libro'=>$libro]);
     }
 
@@ -51,19 +51,15 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-         
+        $libro = Book::find($request->book_id);
         $miBook = new Item();
         $miBook->book_id = $request->book_id;
-        $libro =  Book::find($request->book_id);
-        //$ult = $libro->items()->orderBy('correlativo','desc')->first()->correlativo;
-        //$corr = $ult+1;
-        //$n_ejemplar = $request->num_sala.$request->sala
-       // $miBook->n_ejemplar= $n_ejemplar;
-        //$miBook->n_registro = $request->n_registro;
-        //$miBook->cbn = $request->cbn;
-        //die(var_dump($miBook->n_ejemplar, $miBook->n_registro, $miBook->cbn));
-        //$miBook->save();
-            $request->session()->flash('Éxito','Ejemplar agregado');
+        $miBook->n_ejemplar = $request->n_ejemplar;
+        $miBook->n_registro = $request->n_registro;
+        $miBook->cbn = $request->cbn;
+        $miBook->correlativo = $request->correlativo;
+        $miBook->save();
+            $request->session()->flash('Éxito','Ejemplar agregado de '.$request->n_registro." del libro ".$libro->titulo);
        parent::saveOperation("Inicio","Registro","registrado  el ejemplar ".$request->correlativo." del libro".$libro->titulo);
         return redirect('ejemplares/'.$request->book_id);
     }
@@ -87,7 +83,11 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        $libro = Book::find($id);
+        $item = Item::query('correlativo')->find($id);
+        $libro = $libro.'"correlativo"'.':'."$item->correlativo";
+        
+        return view('items.edit')->with('libro',$libro, 'item',$item);
     }
 
     /**

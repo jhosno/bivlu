@@ -85,7 +85,7 @@ class BookController extends Controller
      */
     public function listado(Request $request)
     { 
-        $data = Book::select('id','titulo','idioma','clasificacion','subclasificacion','numero_paginas','portada','url','resumen')
+        $data = Book::select('id','titulo','idioma','clasificacion','subclasificacion','anio_edicion','portada','url','resumen')
                     ->get()
                     ->toArray();
 
@@ -108,7 +108,11 @@ class BookController extends Controller
                                 ->items()
                                 ->where('estado_item','DISPONIBLE')
                                 ->count();
+           /* $value['items'] = Item::whereHas('book',$bookFilter)
+                              ->get()
+                              ->toArray();
 
+*/
             $nuevoArreglo[] = $value;
         }
         return view('books.index')->with('data',$nuevoArreglo);
@@ -277,7 +281,7 @@ class BookController extends Controller
         $libro = Book::find($id);
         $item = Item::query('correlativo')->find($id);
         //$libro = $libro.'"correlativo"'.':'."$item->correlativo";
-        die(var_dump($libro));
+        
         return view('books.edit')->with('libro',$libro, 'item',$item);
     }
 

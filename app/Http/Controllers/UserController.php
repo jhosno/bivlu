@@ -172,7 +172,8 @@ class UserController extends Controller
 
           ]
         ];
-        $apikey = '';
+            
+        $apikey = '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';
         $options = array(
           'http' => array(
             'header'  => "Content-type: application/json\r\n".
@@ -295,11 +296,9 @@ class UserController extends Controller
   }
   */
   public function suggestions(Request $r )
-    {
-      /*  die(var_dump($r->name, $r->asunto, $r->email, $r->message));
-      $usuario = User::find($r->input('id'));*/
-      $bivlu = 'bivlu.upta@gmail.com';
-              
+  {
+//       die(var_dump($r->name, $r->email, $r->asunto, $r->message));
+        $bivlu = 'bivlu.upta@gmail.com';
         $url = 'https://api.sendgrid.com/v3/mail/send';
         $data = [
           "personalizations" => [
@@ -307,20 +306,21 @@ class UserController extends Controller
             "to" => [
               ["email" => $bivlu]
             ],
-            "subject" => $r->asunto
+            "subject" => "Recuperacion de Clave"
 
           ],
           "from" => [
-            ["email" => $r->email]
+            ["email" => "BIVLU"]
           ],
           "content" => [
 
             "type" => "text/plain",
-            "value" => $r->message
+            "value" => "Su nueva clave es "
 
           ]
         ];
-        $apikey = '';
+            
+        $apikey = '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';
         $options = array(
           'http' => array(
             'header'  => "Content-type: application/json\r\n".
@@ -334,28 +334,32 @@ class UserController extends Controller
                   \"email\": \"{$bivlu}\"
                 }
                 ],
-                \"subject\": \"{$r->asunto}\"
+                \"subject\": \"Recuperacion de clave\"
               }
               ],
               \"from\": {
-                \"email\": \"{$r->email}\"
+                \"email\": \"BIVLU\"
                 },
                 \"content\": [
                 {
                   \"type\": \"text/plain\",
-                  \"value\": \{$r->message}\"
+                  \"value\": \"Su nueva clave es: \"
                 }
                 ]
               }"
             )
         );
         $context  = stream_context_create($options);
-        /*$result = file_get_contents($url, false, $context);
+       /* $result = file_get_contents($url, false, $context);
         if ($result === FALSE) { 
-          die("Su mensaje no pudo ser enviado. Intente de nuevo.");
-        }*/
-        return redirect('/');
+          die("Error Inesperado ha ocurrido. Contacte con el administrador de la web.");
+        } */
+
+        return view('/home');
+         
       } 
 
-    
-  }
+
+    }
+
+
