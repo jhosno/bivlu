@@ -145,9 +145,11 @@ $prestamos = $solicitudes = [];
          $data['vensimiento'] = $fecha;
          $data['user_level']='estudiante';
         }
-
-        return $data;
-        
+        $view =  \View::make('pdf.carnet', ['persona' => $human, 'data' => $data, 'jefe' => $jefe ])->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('carnet');
+        //$data
     }
 
     /**

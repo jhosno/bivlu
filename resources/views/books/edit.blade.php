@@ -87,14 +87,14 @@
         <label for="libro" class="col-md-3 control-label">Cota:<b style="color:red">*</b></label>
 
         <div class="col-md-3">
-           <input class="form-control"  title="Ingrese la Cota del libro." placeholder="Ej. REF HD7273R 73 T2" name="cota" type="text"  value="{{ isset($libro) ? $libro['cota']: '' }}" id = "cota"required value="onchange.uniqid()">
+           <input class="form-control"  title="Ingrese la Cota del libro." placeholder="Ej. REF HD7273R 73 T2"  onchange="this.value=this.value.toUpperCase();" name="cota" type="text"  value="{{ isset($libro) ? $libro['cota']: '' }}" id = "cota"required value="onchange.uniqid()">
             
        </div>
  </div>
  <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
   <label for="libro" class="col-md-3 control-label">Resumen: <b style="color:red">*</b></label>
   <div class="col-md-3">
-    <textarea class="form-control"   name="resumen"  title="Ingrese el resumen del libro." placeholder="Ej. loren ipsum" value="{{ isset($libro) ? $libro['resumen'] : '' }}" required> {{ isset($libro)? $libro['resumen'] : '' }}</textarea>
+    <textarea class="form-control"   name="resumen"  title="Ingrese el resumen del libro." placeholder="Ej. loren ipsum" value="{{ isset($libro) ? $libro['resumen'] : '' }}" > {{ isset($libro)? $libro['resumen'] : '' }}</textarea>
 
   </div>
 

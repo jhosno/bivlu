@@ -94,11 +94,11 @@
         <label for="cota" class="col-md-3 control-label">Cota:<b style="color:red">*</b></label>
 
         <div class="col-md-3">
-           <input class="form-control"  title="Ingrese la Cota del libro." placeholder="Ej. REF HD7273R 73 T2" name="cota" type="text"  value="{{ isset($libro) ? $libro['portada'] : '' }}" id = "cota"required value="onchange.uniqid()"> 
+           <input class="form-control"  title="Ingrese la Cota del libro." placeholder="Ej. REF HD7273R 73 T2" name="cota" type="text"  value="{{ isset($libro) ? $libro['portada'] : '' }}"  onchange="this.value=this.value.toUpperCase();" id = "cota"required value="onchange.uniqid()"> 
        </div>
                <label for="n_ejemplar" class="col-md-3 control-label">N° Ejemplar:<b style="color:red">*</b></label>
         <div class="col-md-3">
-           <input class="form-control"  title="Ingrese número de ejemplar." placeholder="Ej. 1.Sala" name="n_ejemplar" type="text"  value="{{ isset($libro) ? $libro['portada'] : '' }}" id = "cota"required value="onchange.uniqid()"> 
+           <input class="form-control"  title="Ingrese número de ejemplar." placeholder="Ej. 1.Sala" name="n_ejemplar" type="text"  value="{{ isset($libro) ? $libro['portada'] : '' }}" id = "n_ejemplar"required value="onchange.uniqid()"> 
        </div>
    </div>
    <div class="form-group ">
@@ -193,8 +193,9 @@
         autor = getElementsById("autores").value;
         anioEdicion = getElementsById("anio-edicion").value;
         numeroPaginas = getElementsById("numero-paginas").value;
-        correlativo = getElementsById("correlativo").value;
-        UUID = libro[0] + libro[1] + autor[0] + autor[1] + anioEdicion[0] + anioEdicion[1] + numeroPaginas[0] + numeroPaginas[1] + correletivo[0] + correletivo[1] + "-" + 01;
+        cota = getElementsById("cota").value;
+        n_ejemplar = getElementsById("n_ejemplar").value;
+        UUID = libro[0] + libro[1] + autor[0] + autor[1] + anioEdicion[0] + anioEdicion[1] + numeroPaginas[0] + numeroPaginas[1] + cota[0] + cota[1] + "-" + 01;
         console.log(UUID);
         return UUID;
     }();

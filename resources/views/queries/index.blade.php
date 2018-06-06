@@ -66,7 +66,7 @@ makeQuery = function(){
             {
               $.alert({
               title : "No se puede proceder.",
-              content : 'El estudiante no posee foto subida.',
+              content : 'El estudiante no posee foto de perfil actualizada.',
               tipe : "red"
             });
               return false;
