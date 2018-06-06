@@ -22,6 +22,7 @@ class CreateBooksTable extends Migration
             $table->string('portada');
             $table->string('sala');
             $table->string('idioma');
+            $table->string('cota');
             $table->text('resumen');
             $table->date('fecha_incorporacion')->nullable();
             $table->date('fecha_desincorporacion')->nullable(); 

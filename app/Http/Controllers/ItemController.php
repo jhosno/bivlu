@@ -36,7 +36,11 @@ class ItemController extends Controller
     public function create($id)
     {
         $libro = Book::find($id);
-        $book_id = $libro->id;
+     
+
+        
+        $libro = $libro;
+        
 
         return view('items.form')->with(
             ['accion'=>'Nuevo Ejemplar',
@@ -57,7 +61,7 @@ class ItemController extends Controller
         $miBook->n_ejemplar = $request->n_ejemplar;
         $miBook->n_registro = $request->n_registro;
         $miBook->cbn = $request->cbn;
-        $miBook->correlativo = $request->correlativo;
+        
         $miBook->save();
             $request->session()->flash('Éxito','Ejemplar agregado de '.$request->n_registro." del libro ".$libro->titulo);
        parent::saveOperation("Inicio","Registro","registrado  el ejemplar ".$request->correlativo." del libro".$libro->titulo);

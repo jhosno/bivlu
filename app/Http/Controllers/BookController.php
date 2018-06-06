@@ -85,7 +85,7 @@ class BookController extends Controller
      */
     public function listado(Request $request)
     { 
-        $data = Book::select('id','titulo','idioma','clasificacion','subclasificacion','anio_edicion','portada','url','resumen')
+        $data = Book::select('id','titulo','idioma','clasificacion','subclasificacion','anio_edicion','portada','url','resumen', 'cota')
                     ->get()
                     ->toArray();
 
@@ -108,13 +108,12 @@ class BookController extends Controller
                                 ->items()
                                 ->where('estado_item','DISPONIBLE')
                                 ->count();
-           /* $value['items'] = Item::whereHas('book',$bookFilter)
-                              ->get()
-                              ->toArray();
 
-*/
+
+
             $nuevoArreglo[] = $value;
         }
+        
         return view('books.index')->with('data',$nuevoArreglo);
     }
 
@@ -165,6 +164,7 @@ class BookController extends Controller
         $miBook->numero_paginas = $request->numero_paginas;
         $miBook->anio_edicion = $request->anio_edicion;
         /*mod inicia aquí*/
+        $miBook->cota = $request->cota;
         $miBook->resumen = $request->resumen;
         /*mod termina aquí*/
         $miBook->portada = $request->portada;
@@ -190,7 +190,7 @@ class BookController extends Controller
 
         $it = new Item();
         $it->book_id = $miBook->id;
-        $it->correlativo = $request->correlativo;
+        
         $it->n_registro = $request->n_registro;
         $it->n_ejemplar = "1.sala";
         $it->cbn = $request->cbn;
@@ -279,8 +279,12 @@ class BookController extends Controller
     {
         
         $libro = Book::find($id);
-        $item = Item::query('correlativo')->find($id);
-        //$libro = $libro.'"correlativo"'.':'."$item->correlativo";
+        $item = Item::where("book_id","=", $libro->id)
+                
+                ->groupBy('book_id')
+                ->first();
+        
+        $libro = $libro;
         
         return view('books.edit')->with('libro',$libro, 'item',$item);
     }

@@ -1,7 +1,18 @@
 <div class="modal-header">Editar Privilegios de Usuario {{$usuario->name}}</div>
                 <div class="modal-body">
-                    <form class="form-horizontal" method="POST" action="{{ url('usuarios').'/'.$usuario->id }}">
+                    <form class="form-horizontal " method="POST" action="{{ url('usuarios').'/'.$usuario->id }}">
  
+ <div class=" form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+     <label for="user_level" class="control-label col-md-6">Nivel de usuario</label>
+     <select name="user_level" id="user_level" class="form-control col-md-6">
+         <option value="">Selecciones el tipo de usuario</option>
+         <option value="estudiante">Estudiante</option>
+         <option value="jefe">Jefe</option>
+         <option value="encargado">Encargado</option>
+         <option value="profesor">Profesor</option>
+     </select>
+ </div>
+ <div class="form-group">
                         {{ csrf_field() }} 
 
 
@@ -27,7 +38,7 @@
    @endforeach
                         
  
- 
+ </div>
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
                             <input type="button" class="btn btn-primary" value="Cancelar" id="canc" name="">

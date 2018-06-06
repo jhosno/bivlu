@@ -87,7 +87,8 @@
         <label for="libro" class="col-md-3 control-label">Cota:<b style="color:red">*</b></label>
 
         <div class="col-md-3">
-           <input class="form-control"  title="Ingrese la Cota del libro." placeholder="Ej. REF HD7273R 73 T2" name="correlativo" type="text"  value="{{ isset($item) ? $item['correlativo'] : '' }}" id = "correlative"required value="onchange.uniqid()"> 
+           <input class="form-control"  title="Ingrese la Cota del libro." placeholder="Ej. REF HD7273R 73 T2" name="correlativo" type="text"  value="{{ isset($libro) ? $libro['cota']: '' }}" id = "correlative"required value="onchange.uniqid()">
+            
        </div>
  </div>
  <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

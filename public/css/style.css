@@ -251,7 +251,7 @@ td a
 
 .form-group label.control-label, .modal-header {
     color: #d84a1d;
-    font-size: 14px;
+    font-size: medium;
 }
 
 .modal-header {

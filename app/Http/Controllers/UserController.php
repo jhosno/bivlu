@@ -262,6 +262,9 @@ class UserController extends Controller
           }
         }
       }
+      $user = User::find($id);
+      $user->user_level = $request->user_level;
+      $user->save();
       parent::saveOperation("Inicio","Usuarios","modificado privilegios del usuario # $id");
       return redirect('usuarios');
     }
@@ -320,7 +323,7 @@ class UserController extends Controller
           ]
         ];
             
-        $apikey = '';
+        $apikey = ' ';
         $options = array(
           'http' => array(
             'header'  => "Content-type: application/json\r\n".

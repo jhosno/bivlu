@@ -14,7 +14,7 @@
     </caption>
     <thead>
         <tr>
-    
+            <th>Cota</th>
             <th>Título</th>
             <th>Tipo</th>
             <th>Año de edición</th>
@@ -28,6 +28,7 @@
 @foreach($data as $value)
         <tr>
 
+            <td>{{ $value['cota'] }}</td> 
             <td>{{ $value['titulo'] }}</td> 
             <td>
             @if($value['clasificacion']==1) 

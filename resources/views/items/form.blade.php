@@ -1,22 +1,10 @@
-<div class="modal-header">Agregar Ejemplar de {{ isset($libro) ? $libro['titulo'] : '' }}</div>
+<div class="modal-header">Agregar Ejemplar de {{ isset($libro) ? $libro['titulo'] : '' }} <br> COTA: {{ isset($libro) ? $libro['cota'] : '' }}</div>
 <div class="modal-body">
     <form class="form-horizontal" method="POST" action="{{ url('ejemplares/store') }}">
         <input type="hidden" name="book_id" value="{{$libro->id}}"> 
         {{ csrf_field() }} 
 
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-            <label for="libro" class="col-md-3 control-label">Título:</label>
 
-            <div class="col-md-3">
-                {{ isset($libro) ? $libro['titulo'] : '' }}                             
-            </div>
-            <label for="password" class="col-md-3 control-label">Cota:</label>
-
-            <div class="col-md-3">
-                <input class="form-control"  title="" placeholder="Ej. REF HD7273R 73 T2" name="correlativo" type="text" min="1"  disabled="true" > 
-
-            </div>
-        </div>
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
             <label for="libro" class="col-md-3 control-label">N° Registro:<b style="color:red">*</b></label>
 

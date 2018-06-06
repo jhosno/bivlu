@@ -88,13 +88,17 @@
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
            <label for="libro" class=" control-label col-md-3">Resumen: </label>
            <div class="col-md-3">
-            <textarea class="form-control col-md-3" cols="2" rows="2"  name="resumen"  title="Ingrese el resumen del libro." placeholder="Ej. loren ipsum" > </textarea>
+            <textarea class="form-control col-md-3" cols="2" rows="3"  name="resumen"  title="Ingrese el resumen del libro." placeholder="Ej. loren ipsum" > </textarea>
 
         </div>
-        <label for="libro" class="col-md-3 control-label">Cota:<b style="color:red">*</b></label>
+        <label for="cota" class="col-md-3 control-label">Cota:<b style="color:red">*</b></label>
 
         <div class="col-md-3">
-           <input class="form-control"  title="Ingrese la Cota del libro." placeholder="Ej. REF HD7273R 73 T2" name="correlativo" type="text"  value="{{ isset($libro) ? $libro['portada'] : '' }}" id = "correlative"required value="onchange.uniqid()"> 
+           <input class="form-control"  title="Ingrese la Cota del libro." placeholder="Ej. REF HD7273R 73 T2" name="cota" type="text"  value="{{ isset($libro) ? $libro['portada'] : '' }}" id = "cota"required value="onchange.uniqid()"> 
+       </div>
+               <label for="n_ejemplar" class="col-md-3 control-label">N° Ejemplar:<b style="color:red">*</b></label>
+        <div class="col-md-3">
+           <input class="form-control"  title="Ingrese número de ejemplar." placeholder="Ej. 1.Sala" name="n_ejemplar" type="text"  value="{{ isset($libro) ? $libro['portada'] : '' }}" id = "cota"required value="onchange.uniqid()"> 
        </div>
    </div>
    <div class="form-group ">
@@ -105,6 +109,7 @@
     <input id="archivo"   onchange="return Validate(document.forms[0]);" title="Seleccione una versión PDF de la tesis." type="file" style="width:auto;opacity:1;height:auto;position:static;" class="form-control col-md-3" accept=".pdf"name="archivo" disabled  required autofocus> 
 
 
+    
 </div>
 <div class=" text-center">
     <hr>

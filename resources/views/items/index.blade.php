@@ -14,12 +14,14 @@
 <a   class="btn btn-primary primary-btn" href="{{url('libros/listado')}}">Volver a Registro de Libros</a>
 
 <table class="table">
+    <h4>COTA: {{ $libro->cota }}</h4>
+      <h5>{{ $libro->titulo }}</h5>
     <caption>
-        Ejemplares del Libro {{ $libro->titulo }}
+        Ejemplares del Libro
     </caption>
     <thead>
         <tr>
-            <th>Cota</th>
+            
             <th>N° Registro</th>
             <th>N° Ejemplar</th>
             <th>Cod. Bienes nacionales</th>
@@ -30,7 +32,7 @@
     <tbody>
 @foreach($data as $value)
         <tr>
-            <td>{{ $value['correlativo'] }}</td> 
+            
             <td>{{ $value['n_registro'] }}</td> 
             <td>{{ $value['n_ejemplar'] }}</td>
             <td>{{ $value['cbn'] }}</td>

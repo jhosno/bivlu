@@ -298,7 +298,7 @@ class LoanController extends Controller
     public function store(Request $request)
     { 
         if(Auth::guest()) return view('ajax.novalid');
-        if(Auth::user()->user_level=='admin')
+        if(Auth::user()->user_level=='admin' || Auth::user()->user_level=='encargado' || Auth::user()->user_level=='jefe')
             return redirect('prestamos/nuevo/'.$request->book_id);
         $b = new Loan();
         $fecha_solicitud = new Carbon();
