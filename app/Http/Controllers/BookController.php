@@ -165,7 +165,7 @@ class BookController extends Controller
         $miBook->anio_edicion = $request->anio_edicion;
         /*mod inicia aquí*/
         $miBook->cota = $request->cota;
-        $miBook->resumen = $request->resumen;
+        $miBook->resumen = trim($request->resumen);
         /*mod termina aquí*/
         $miBook->portada = $request->portada;
         $miBook->sala =1;
@@ -279,14 +279,10 @@ class BookController extends Controller
     {
         
         $libro = Book::find($id);
-        $item = Item::where("book_id","=", $libro->id)
-                
-                ->groupBy('book_id')
-                ->first();
-        
+
         $libro = $libro;
         
-        return view('books.edit')->with('libro',$libro, 'item',$item);
+        return view('books.edit')->with('libro',$libro);
     }
 
     /**
@@ -303,6 +299,7 @@ class BookController extends Controller
         $miBook->numero_paginas = $request->numero_paginas;
         $miBook->anio_edicion = $request->anio_edicion;
         $miBook->portada = $request->portada;
+        $miBook->cota = $request->cota;
         $miBook->resumen = $request->resumen;
         $miBook->sala =1;
         $miBook->tipo ='LIBRO';
@@ -311,10 +308,7 @@ class BookController extends Controller
         $miBook->publisher_id = 1;
         $miBook->speciality_id = 1;
         $miBook->save();
-        $item = Item::find($id)->book_id;
-        $item->correlativo = $request->correlativo;
-        die(var_dump($item));
-        $item->save();
+        
         $arr_tags = explode(",", $request->etiquetas);
         $arr_autores = explode(",", $request->autores);
 
