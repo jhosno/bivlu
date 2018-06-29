@@ -5,6 +5,7 @@
         <input type="hidden" name="human_id" > 
         <input type="hidden" name="tranca" required title="Debe ingresar una cédula existente en sistema.">
         <input type="hidden" name="tranca" required title="Esta cédula ya esta registrada pruebe con la opción de recuperar contraseña">
+        <input type="hidden" name="propio" required title="">
         {{ csrf_field() }} 
 
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -18,8 +19,12 @@
             <label for="evento" class="col-md-3 control-label">Correo Electrónico:<b style="color:red">*</b></label>
 
             <div class="col-md-3">
-                <input id="email" type="email" title="Ingrese su dirección de correo electrónico." placeholder="Ej. asasa12@hotmail.com"   class="form-control" name="email"  required autofocus>
-
+                <input id="email" type="email" title="Ingrese su dirección de correo electrónico." placeholder="Ej. asasa12@hotmail.com"   class="form-control{{ $errors->has('email') ? ' has-error' : '' }}" name="email"  required autofocus>
+                      @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                @endif
             </div>
         </div>
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -36,6 +41,17 @@
 
             </div>
         </div>
+                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            <label for="numero_telefono" class="col-md-3 control-label">Télefono de contacto:<b style="color:red">*</b></label>
+
+  
+        <div class="col-md-3">
+            <input class="form-control " title="Télefono de contato" placeholder="Télefono de contato" type="number" name="numero_telefono" required> 
+
+        </div>
+    
+    </div>
+        <hr>
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
             <label for="evento" class="col-md-3 control-label">Contraseña:<b style="color:red">*</b></label>
 
@@ -74,6 +90,8 @@
         </div>
     
     </div>
+      
+
 <div class="col-md-offset-8"><a href="{{url('recuperacion')}}">¿Olvidó su contraseña? <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></a></div>
     <div class="form-group">
         <div class="col-md-8 col-md-offset-4">
@@ -94,7 +112,8 @@
         var val = $('[name=cedula]').val();
         if(val.trim!='')
             $.get('{{url('api/humanos')}}?nouser=1&cedula='+val,function(data)
-            {  
+            { 
+            console.log(data) ;
                 
                 var human_id = data[0]['id'];
                     
@@ -102,13 +121,17 @@
                 {
                     $('[name=nombres]').val(data[0]['nombres']);
                     $('[name=apellidos]').val(data[0]['apellidos']);
+                    $('[name=numero_telefono]').val(data[0]['numero_telefono']);
                     $('[name=human_id]').val(data[0]['id']);
                     $('[name=tranca]').val("PASA");
+                    console.log('hola, vale');
                 }
                 else
                 {
                     $('[name=cedula]').val('');
-                    alert('Usuario no encontrado o ya registrado'); 
+                    alert('Usuario foraneo a la instituación o ya registrado');
+                    $('[name=propio]').val("foraneo"); 
+                    console.log('Chao, vale')
 
                 }
             });

@@ -56,7 +56,7 @@
             </td> 
             <td>
                 <a title="Editar" onclick="paraEdit({{$value['id']}})" title="Editar" ><i class="material-icons ">create</i></a>
-                <a  onclick="if(confirm('En verdad desea eliminar el libro?')){$('#miforma').attr('action','{{url('libros')}}/'+{{$value['id']}}).submit();}" title="Eliminar" ><i class="material-icons ">delete</i></a>
+                <a  onclick="if(confirm('¿Esta seguro de que desea desincorporar este libro?')){$('#miforma').attr('action','{{url('libros')}}/'+{{$value['id']}}).submit();}" title="Eliminar" ><i class="material-icons ">delete</i></a>
                 <a  href="{{url('ejemplares/'.$value['id'])}}" title="Ver Ejemplares"><i class="material-icons ">book</i></a>
             </td>
         </tr>

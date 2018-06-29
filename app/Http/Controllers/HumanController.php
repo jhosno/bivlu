@@ -14,8 +14,8 @@ class HumanController extends Controller
      */
     public function index(Request $request)
     { 
+        //debo validar: si esta en la lista de usuarios, si esta el DB departamento, como profesor u estudiante, de lo contrario, el usuario es:foraneo o asosiado(actualmente no existe una lista fidedigna del cuerpo de empleados activos en la UPTA)
         $cedula = $request->cedula;
-        $arreglo = [];
         $rs = Human::where('cedula',"$cedula")
                 ->get()
                 ->toArray(); 

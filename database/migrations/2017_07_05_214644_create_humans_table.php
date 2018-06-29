@@ -19,6 +19,7 @@ class CreateHumansTable extends Migration
             $table->string("nombres");
             $table->string("apellidos");
             $table->string("numero_telefono");
+            $table->string("rol");
             $table->timestamps();
         });
     }

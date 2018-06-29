@@ -281,6 +281,7 @@ class BookController extends Controller
         $libro = Book::find($id);
 
         $libro = $libro;
+
         
         return view('books.edit')->with('libro',$libro);
     }
@@ -307,6 +308,7 @@ class BookController extends Controller
         $miBook->idioma = 'ESPAÑOL';
         $miBook->publisher_id = 1;
         $miBook->speciality_id = 1;
+        
         $miBook->save();
         
         $arr_tags = explode(",", $request->etiquetas);
@@ -353,7 +355,7 @@ class BookController extends Controller
             $c->author_id = $author->id;
             $c->save();
         }
-        /*Esta es la línea de error al modificar libro */
+        
         
         if($request->file('archivo'))
         {

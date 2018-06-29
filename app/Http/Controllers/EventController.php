@@ -69,7 +69,7 @@ class EventController extends Controller
             ['event_id','<>',null]
             ] )->update(['visto' => 1]);
 
-            return view('events.noconfirm')->with(['data'=>$data,'perspective'=>'admin']);
+            return view('events.noconfirm')->with(['data'=>$data,'perspective'=>'admin','perspective'=>'jefe','perspective'=>'encargado']);
     }
 
 

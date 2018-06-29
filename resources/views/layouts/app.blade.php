@@ -52,23 +52,20 @@
                     <li><a href="<?php echo e(url('acerca-de')); ?>">Nosotros</a></li>
 
 
-
-
                     <!-- Suggestions -->                 
                     <li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="<?php echo e(url('sugerencias')); ?>" data-target="#all-modal" ><button id="sugerencias-trigger" class="btn btn-sm" style="color: #fff;">Sugerencias</button></a></li>
                     
                     <!-- Suggestions -->   
 
 
-
-
-
-
-
-
                     <li><a data-toggle="modal" data-titulo="Inicio de Sesión" data-load="<?php echo e(url('login')); ?>" data-target="#all-modal" ><button id="login-trigger" class="btn btn-raised btn-warning btn-sm">¡Entrar!</button></a></li>
                     <li><a data-toggle="modal"  data-load="<?php echo e(url('signup')); ?>" data-target="#all-modal" ><button id="signup-trigger" class="btn btn-raised btn-warning btn-sm">Registrarse</button></a></li>
-                    <?php elseif(Auth::user()->user_level=='admin'): ?>
+
+
+
+
+                    
+                    <?php elseif(Auth::user()->user_level=='admin' || Auth::user()->user_level=='jefe' || Auth::user()->user_level=='encargado'): ?>
 
 
                         <li><a href="<?php echo e(url('libros/listado')); ?>">Registro</a></li> 
@@ -102,6 +99,8 @@
                                 <li><a href="<?php echo e(url('estadisticas')); ?>">Estadísticas</a></li>
                             </ul>
                         </li>
+
+
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 Mantenimiento <span id="events_opt"></span><span class="caret"></span>
@@ -113,6 +112,9 @@
                                 <li><a href="<?php echo e(url('bitacora')); ?>">Bitácora</a></li>
                             </ul>
                         </li>
+
+
+
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 <?php echo e(Auth::user()->name); ?> <span class="caret"></span>

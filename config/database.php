@@ -53,6 +53,20 @@ return [
             'strict' => false,
             'engine' => null,
         ],
+        'departamento' => [
+            'driver' => 'mysql',
+            'host' => env('DACE_HOST', 'localhost'),
+            'port' => env('DACE_PORT', '3306'),
+            'database' => env('DACE_DATABASE', 'departamento'),
+            'username' => env('DACE_USERNAME', 'root'),
+            'password' => env('DACE_PASSWORD', ''),
+            'unix_socket' => env('DACE_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => 'dace',
+            'strict' => false,
+            'engine' => null,
+        ],
 
         'pgsql' => [
             'driver' => 'pgsql',

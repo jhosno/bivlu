@@ -99,6 +99,7 @@ var drawCarnet = function(data)
     try{
     var image = new Image();
     image.src='http://localhost/bivlu/public/uploads/'+data.foto;
+   //image.src='http://bivlu.upta.edu.ve/public/uploads/'+data.foto;
     }catch( e){
       console.log(e);
     }
@@ -110,7 +111,8 @@ var drawCarnet = function(data)
 
    try{
     var logo = new Image();
-    logo.src='http://localhost/bivlu/public/img/logo_upta.png';
+    logo.src='https://localhost/bivlu/public/img/logo_upta.png';
+    //logo.src='http://bivlu.upta.edu.ve/public/img/logo_upta.png';
     }catch( e){
       console.log(e);
     }
@@ -151,11 +153,12 @@ var drawCarnet = function(data)
     ctx.font = "bold 18px Arial";
     ctx.textAlign = "center";
     ctx.fillStyle = "white";
-    ctx.fillText(data.user_level=='estudiante'? 'ESTUDIANTE' : data.user_level, 200,224);
+    ctx.fillText(data.user_level=='estudiante'? 'ESTUDIANTE' : data.user_level, 300,224);
+    ctx.fillText("BIBLIOTECA", 100,224);
     ctx.fillStyle = 'black';
     ctx.textAlign = 'center';
     ctx.font = '10px arial';
-    ctx.fillText( 'Prof(a)', 58,170);
+    ctx.fillText( 'Prof.', 58,170);
     ctx.fillText( data.jefe_nombres+' '+data.jefe_apellidos, 58,180);
     ctx.fillText( 'Jefe de centro', 58,190);
     ctx.fillText( 'de información', 58,200);

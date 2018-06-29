@@ -10,6 +10,8 @@
          <option value="jefe">Jefe</option>
          <option value="encargado">Encargado</option>
          <option value="profesor">Profesor</option>
+         <option value="profesor">Trabajador</option>
+         <option value="profesor">Foraneo</option>
      </select>
  </div>
  <div class="form-group">

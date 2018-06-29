@@ -77,7 +77,7 @@ class LoanController extends Controller
     public function prestamos_agrupados()
     {
         $user = Auth::user();
-        if($user->user_level=='admin')
+        if($user->user_level=='admin' || $user->user_level=='encargado' || $user->user_level=='jefe')
         $users = User::all();
         else $users = [$user];
          $cuentas=[];
@@ -110,7 +110,7 @@ class LoanController extends Controller
     public function prestamos($usr,$fecha)
     {
         $user = Auth::user();
-        if($user->user_level!=='admin')
+        if($user->user_level=='admin' || $user->user_level=='encargado' || $user->user_level=='jefe')
             $usr = $user->id;
 
          $solicitudes  = Loan::where([['estado','=','SIN DEVOLVER'],
@@ -165,7 +165,7 @@ class LoanController extends Controller
     public function noconfirm_agrupados()
     {
         $user = Auth::user();
-        if($user->user_level=='admin')
+        if($user->user_level=='admin' || $user->user_level=='encargado' || $user->user_level=='jefe')
         $users = User::all();
         else $users = [$user];
          $cuentas=[];
@@ -310,7 +310,7 @@ class LoanController extends Controller
                 ['user_id', '=',Auth::user()->id]])
                 ->orWhere([['estado', '=','SIN DEVOLVER'],
                 ['user_id', '=',Auth::user()->id]])
-                ->count() >= 3)
+                ->count() >= 2)
             return 400;
 
             $loans = User::find(Auth::user()->id)->loans->whereIn('estado',['SIN RETIRAR','SIN DEVOLVER']);
@@ -355,50 +355,101 @@ class LoanController extends Controller
         $fecha_solicitud = new Carbon();
         $fecha_solicitud = $fecha_solicitud->toDateString();
         
- 
-            if(Loan::where([['estado', '=','SIN RETIRAR'],
+
+        if(Loan::where([['estado', '=','SIN RETIRAR'],
+            ['user_id', '=',Auth::user()->id]])
+            ->orWhere([['estado', '=','SIN DEVOLVER'],
                 ['user_id', '=',Auth::user()->id]])
-                ->orWhere([['estado', '=','SIN DEVOLVER'],
-                ['user_id', '=',Auth::user()->id]])
-                ->count() > 5)
+            ->count() > 2)
+        {
+            $request->session()->flash('error','El usuario ya alcanzó los 2 préstamos pendientes.');
+            return redirect('prestamos');
+        }
+
+        $loans = User::find(Auth::user()->id)->loans->whereIn('estado',['SIN RETIRAR','SIN DEVOLVER']);
+
+        foreach ($loans as $loan)
+        {
+            if($loan->item->book_id == $request->book_id)
             {
-                $request->session()->flash('error','El usuario ya alcanzó los 5 préstamos pendientes.');
+                $request->session()->flash('error','El usuario ya ha solicitado  o posee un ejemplar.');
                 return redirect('prestamos');
             }
+        }
 
-            $loans = User::find(Auth::user()->id)->loans->whereIn('estado',['SIN RETIRAR','SIN DEVOLVER']);
-            
-            foreach ($loans as $loan)
-            {
-                if($loan->item->book_id == $request->book_id)
-                {
-                    $request->session()->flash('error','El usuario ya ha solicitado  o posee un ejemplar.');
-                    return redirect('prestamos');
-                }
-            }
-
-            $b->fecha_expiracion = 
-            parent::calcularFechaExpiracion($fecha_solicitud,5);
+        $b->fecha_expiracion = parent::calcularFechaExpiracion($fecha_solicitud,2);
+        
+        if ($request->asociado == NULL) {
             $b->user_id =  Human::find($request->user_id)->user->id;
             $b->item_id = Item::where(
                 [
                     ['book_id','=',$request->book_id], 
                     ['estado_item','=','DISPONIBLE']
                 ])->first()
-                ->id; 
-                $b->estado = 'SIN DEVOLVER';
+            ->id; 
+            $b->estado = 'SIN DEVOLVER';
             $b->save();
 
-                $i = Item::find($b->item_id);
-                $i->estado_item='AUSENTE';
-                $i->save();
+            $i = Item::find($b->item_id);
+            $i->estado_item='AUSENTE';
+            $i->save();
+                    $b->user_id =  Human::find($request->user_id)->user->id;
+        $b->item_id = Item::where(
+            [
+                ['book_id','=',$request->book_id], 
+                ['estado_item','=','DISPONIBLE']
+            ])->first()
+        ->id; 
+        $b->estado = 'SIN DEVOLVER';
+        $b->save();
 
-                $libro = Book::find($request->book_id);
-                $expiracion = date("d/m/Y", strtotime($b->fecha_expiracion));
- 
+        $i = Item::find($b->item_id);
+        $i->estado_item='AUSENTE';
+        $i->save();
+        }else{
+            
+            $b->nombre_responsable=$request->nombre_responsable;
+            $b->telefono_responsable=$request->telefono_responsable;
+            $b->item_id = Item::where(
+                [
+                    ['book_id','=',$request->book_id], 
+                    ['estado_item','=','DISPONIBLE']
+                ])->first()
+            ->id; 
+
+            $b->estado = 'SIN DEVOLVER';
+            $b->fecha_retirado = date("Y-m-d h:i:s");
+            $b->save();
+
+            $i = Item::find($b->item_id);
+            $i->estado_item='AUSENTE';
+
+            $i->save();
+                    
+        $b->item_id = Item::where(
+            [
+                ['book_id','=',$request->book_id], 
+                ['estado_item','=','DISPONIBLE']
+            ])->first()
+        ->id; 
+        $b->estado = 'SIN DEVOLVER';
+        $b->fecha_retirado = date("Y-m-d h:i:s");
+        $b->save();
+
+        $i = Item::find($b->item_id);
+        $i->estado_item='AUSENTE';
+        $i->save();
+        }
+
+
+
+
+        $libro = Book::find($request->book_id);
+        $expiracion = date("d/m/Y", strtotime($b->fecha_expiracion));
+
 
         $request->session()->flash('Éxito',"Préstamo concedido. Antes de la fecha $expiracion el usuario debe devolver el libro en horario de oficina.");
-                parent::saveOperation("Inicio","Prestamos","almacenado el préstamo # ".$b->id);
+        parent::saveOperation("Inicio","Prestamos","almacenado el préstamo # ".$b->id);
         return redirect('prestamos');
     }
 

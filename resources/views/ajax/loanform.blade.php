@@ -4,6 +4,7 @@
                     <input type="hidden" name="book_id" value="{{$libro->id}}"> 
                     <input type="hidden" name="user_id" > 
                     <input type="hidden" name="tranca" required title="Debe ingresar una cédula existente en sistema.">
+                    <input type="hidden" name="asociado" required title="Debe ingresar una cédula existente en sistema.">
                         {{ csrf_field() }} 
 
 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -24,13 +25,13 @@
                             <label for="evento" class="col-md-3 control-label">Nombre Solicitante:<b style="color:red">*</b></label>
 
                             <div class="col-md-3">
-                                <input id="n" type="text" title="Nombres del solicitante." placeholder="Ej. Jose"  class="form-control datos_persona" name="nombre_responsable" value="{{ isset($evento) ? $evento['nombre_responsable'] : '' }}" readonly required >
+                                <input id="n" type="text" title="Nombres del solicitante." placeholder="Ej. Jose"  class="form-control datos_persona" name="nombre_responsable" value="{{ isset($evento) ? $evento['nombre_responsable'] : '' }}"  required >
 
                             </div>
                             <label for="password" class="col-md-3 control-label">Teléfono Solicitante:<b style="color:red">*</b></label>
 
                             <div class="col-md-3">
-                                <input class="form-control datos_persona"  title="Teléfono del Solicitante." placeholder="Ej.04123332222" name="telefono_responsable" value="{{ isset($evento) ? $evento['telefono_responsable'] : '' }}" readonly required> 
+                                <input class="form-control datos_persona"  title="Teléfono del Solicitante." placeholder="Ej.04123332222" name="telefono_responsable" value="{{ isset($evento) ? $evento['telefono_responsable'] : '' }}"  required> 
 
                             </div>
                         </div>
@@ -55,17 +56,18 @@
         if(val.trim!='')
         $.get('{{url('api/humanos?nouser=1')}}&cedula='+val,function(data)
             { 
-                console.log(data);
+                
                 if(data[0]!=undefined)
                 {
-                    $('[name=nombre_responsable]').val(data[0]['nombres']+' '+data[0]['apellidos']);
+                    $('[name=nombre_responsable]').val(data[0]['nombres']+' '+data[0]['apellidos']).attr('readonly','true');
+                    
                     $('[name=telefono_responsable]').val(data[0]['numero_telefono']);
                     $('[name=user_id]').val(data[0]['id']);
                     $('[name=tranca]').val("PASA");
                 }
                 else
                 {
-                    $('[name=cedula]').val('');
+                    $('[name=asociado]').val('foraneo');
                     alert('Usuario no encontrado'); 
 
                 }

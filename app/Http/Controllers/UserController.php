@@ -49,11 +49,18 @@ class UserController extends Controller
       $u = new User();
       $u->name = $request->nombres;
       $u->email = $request->email;
-      $u->user_level = 'estudiante';
+      $u->user_level = 'foraneo';
       $u->human_id = $request->human_id;
       $u->password = Hash::make($request->contrasena);
-
+        
       $u->save();
+
+
+      $h = Human::find($request->human_id);
+      $h->numero_telefono = $request->numero_telefono;
+      $h->save();
+
+      
       foreach($porDefectos as $modulo => $subPrivilegios)
       {
         if(is_string($subPrivilegios))

@@ -43,7 +43,7 @@
       @if(Session::has('canvio'))
 $.alert({
     title: 'Operación exitosa.',
-    content: 'Ahora debe iniciar sesion con su nueva contraseña' ,
+    content: 'Ahora debe iniciar sesión con su nueva contraseña' ,
     type: 'green'
 });
 @endif

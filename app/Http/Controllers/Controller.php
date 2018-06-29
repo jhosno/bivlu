@@ -17,8 +17,9 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     protected  $pociblesPrivilegios = [
     'Registro'=>['Agregar','Modificar','Eliminar','Agregar Ejemplar'],
-    'Libros'=>['Mis Solicitudes'=>'','Mis Préstamos'=>'','Histórico de Préstamos'=>''],
     'Prestamos'=>['Solicitud'=>'','Devoluciones'=>''],
+    'Libros'=>['Mis Solicitudes'=>'','Mis Préstamos'=>'','Histórico de Préstamos'=>''],
+    
     'Eventos'=>['Propuestas'=>'','Pendientes'=>''],
     'Actividades'=> '',
     'Consultas'=>['Individuales'=>'','Solventes y Morosos'=>'','Estadisticas'=>''],
@@ -42,7 +43,7 @@ class Controller extends BaseController
     protected function generateNotifications($kind,$id,$usrs=null)
     {
         if($usrs==null)
-        $usrs = User::where('user_level','admin')->get()->toArray();
+        $usrs = User::where('user_level','admin')->orWhere('user_level','jefe')->orWhere('user_level','encargado')->get()->toArray();
     else $usrs = [['id'=>$usrs]];
         foreach ($usrs as $key => $value) {
             $notif = new Notification;
