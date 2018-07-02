@@ -122,6 +122,19 @@ var drawCarnet = function(data)
      ctx.drawImage(logo,290, 27,80,100);//, 370, 220);
    };
 
+   try{
+    var firma = new Image();
+    firma.src='https://localhost/bivlu/public/img/firma_jefe.png';
+    //logo.src='http://bivlu.upta.edu.ve/public/img/firma_jefe.png';
+    }catch( e){
+      console.log(e);
+    }
+   firma.onload=function(){ 
+    firma.width=2;
+    firma.height=2;
+     ctx.drawImage(firma,18, 130, 80, 25);//, 370, 220);
+   };
+
   
     ctx.lineWidth=1;
     ctx.strokeRect(10, 10, 370, 220);
@@ -162,8 +175,8 @@ var drawCarnet = function(data)
     ctx.fillText( data.jefe_nombres+' '+data.jefe_apellidos, 58,180);
     ctx.fillText( 'Jefe de centro', 58,190);
     ctx.fillText( 'de información', 58,200);
-    ctx.fillStyle = "Indigo";
-    ctx.fillRect(18, 130, 80, 25);
+    //ctx.fillStyle = "Indigo";
+    //ctx.fillRect(18, 130, 80, 25);
   }
 
 </script>
